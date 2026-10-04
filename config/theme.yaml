@@ -12,3 +12,6 @@ domains:
   personal_life:
     display_name: Personal
     theme_owner: Hestia
+  systems_automation:
+    display_name: Automations
+    theme_owner: Hephaestus
