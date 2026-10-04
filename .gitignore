@@ -1,0 +1,18 @@
+# Operating-system metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor-local metadata
+.idea/
+.vscode/
+
+# Local environment and secrets
+.env
+.env.*
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*~
