@@ -3,3 +3,8 @@ theme: olympus
 aliases:
   governor: Zeus
   orchestrator: Hermes
+
+domains:
+  professional_delivery:
+    display_name: Work
+    theme_owner: Apollo

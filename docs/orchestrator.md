@@ -11,7 +11,7 @@
 | Runtime Instance | A future distinct Olympus-specific instance; not created here |
 | External host | Hermes-Main, the general-purpose execution environment used for authorized bootstrap and validation, outside Olympus's role mapping |
 
-Hermes-Main retains its own identity/profile. Loading a role prompt for an isolated model evaluation does not convert the host into that architectural role. No real Realm Owner exists and no first Realm is selected; all Owner descriptions used below are synthetic test data. Worker remains **REFERENCE ONLY**.
+Hermes-Main retains its own identity/profile. At Block 1.2 validation, no real Realm Owner existed and no first Realm had been selected; all Owner descriptions below are historical synthetic test data. Blocks 1.3/1.4 subsequently define `professional_delivery` and its [first declarative Owner](domain-owner.md); no persistent instance or actual handoff is created. The Orchestrator prompt remains unchanged. A host-supplied description may name `professional_delivery_owner`, `realm: professional_delivery`, and its bounded responsibility; the existing `realm` field denotes the canonical Domain, not a new identifier system. The five other candidate Owners remain unavailable reference-only concepts. Worker remains **REFERENCE ONLY**.
 
 ## Responsibility and judgment
 
@@ -226,6 +226,6 @@ Required now: the two role/documentation files, input/output contract, specialis
 
 Reference only: a future Worker as a temporary, reduced, bounded projection of its parent Realm Owner, with the parent accountable. No Worker prompt, schema, directory, lifecycle, support, or spawning is implemented.
 
-Deferred: actual Realm Owners/first-domain selection (Blocks 1.3/1.4), end-to-end runtime (Block 1.5 and later assembly), persistent orchestrator instance, runtime handoff/persistence, Context & Memory (Session 3), Agent Memory, Shared Second Brain/Librarian, Skills & Capabilities (Session 4), skill acquisition, PM installations, persistent Planning Room chat, Board/Mission Control, observability platform, event bus, database, and distributed runtime. The previous `Olympus_OS` remains historical reference only.
+Deferred at Block 1.2: actual Realm Owners/first-domain selection (subsequently defined and declaratively validated in Blocks 1.3/1.4), end-to-end validation (subsequently executed as [Block 1.5 host-side validation](block-1.5.md)), runtime assembly at a future approved milestone, persistent orchestrator instance, runtime handoff/persistence, Context & Memory (Session 3), Agent Memory, Shared Second Brain/Librarian, Skills & Capabilities (Session 4), skill acquisition, PM installations, persistent Planning Room chat, Board/Mission Control, observability platform, event bus, database, and distributed runtime. The previous `Olympus_OS` remains historical reference only.
 
 The approved planning concepts were informed by `mattpocock/skills` (grilling, grill-with-docs, domain-modeling, wayfinder) and `phuryn/pm-skills` (create-prd, strategy-red-team, pre-mortem, prioritization-frameworks, sprint-plan, wwas, related planning material). They are design references, not Olympus runtime dependencies. No external skill text was copied wholesale or installed into Olympus; the approved Block 1.2 requirements define behavior.

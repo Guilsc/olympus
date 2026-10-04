@@ -18,10 +18,10 @@ The [Constitution](CONSTITUTION.md) contains the eight approved principles; [arc
 |---|---|---|
 | `governor` | Zeus | Minimal declarative governance prompt implemented and validated in Block 1.1 |
 | `orchestrator` | Hermes | Minimal declarative orchestration prompt implemented and validated in Block 1.2; no persistent runtime instance |
-| `domain_owner` | None selected | Approved role; no first domain or Domain Owner implemented |
+| `domain_owner` | Apollo for `professional_delivery` | First declarative Owner implemented and validated in Block 1.4; functional identifier `professional_delivery_owner`, no persistent runtime |
 | `worker` | None selected | **REFERENCE ONLY**; implementation and operational semantics deferred until a demonstrated delegation need exists |
 
-The [theme configuration](../config/theme.yaml) contains only `governor` → Zeus and `orchestrator` → Hermes. Narrative aliases do not replace canonical identifiers in decisions or ownership.
+The [theme configuration](../config/theme.yaml) keeps `governor` → Zeus and `orchestrator` → Hermes and adds the promoted Domain's Work/Apollo display mapping. Narrative aliases do not replace canonical identifiers in decisions or ownership.
 
 ## Conceptual responsibility planes
 
@@ -60,7 +60,7 @@ Only `REQUIRED NOW` items enter the current implementation. Ask: **What concrete
 User → Governor → Orchestrator → Domain Owner → Result
 ```
 
-This is the approved future first vertical slice, not an implemented end-to-end flow. The role labels correspond to canonical `governor`, `orchestrator`, and `domain_owner`; Worker is deliberately absent.
+[Block 1.5](block-1.5.md) executes this vertical slice in isolated native conversations in external Hermes-Main, passing actual raw outputs unchanged. This is host-side validation, not persistent Olympus runtime assembly or production dispatch. The role labels correspond to canonical `governor`, `orchestrator`, and `domain_owner`; Worker is deliberately absent.
 
 ## Hermes-Main versus Olympus Hermes
 
@@ -89,9 +89,9 @@ Planning Room is a reusable logical collaboration capability, not an implemented
 
 ## Intentionally not implemented
 
-- A persistent Orchestrator runtime instance, a first Domain Owner or domain, and Worker behavior, configuration, or lifecycle.
-- Real runtime handoff, specialist domain execution, concurrent execution scheduling, or the complete target flow. Work decomposition, dependency planning, and safe-parallelism judgment are declarative Block 1.2 semantics only.
+- Persistent Governor, Orchestrator, or Domain Owner runtime instances, and Worker behavior/configuration/lifecycle. Blocks 1.3/1.4 add the [Domain design contract](domains.md) and [first declarative Owner](domain-owner.md), not runtime assembly.
+- Production runtime handoff, external specialist execution, concurrent execution scheduling, or durable initiative persistence. Block 1.5 validates the complete host-side target chain and supplied-fact text inspection/production, not executing apps/software, retrieving research, running experiments, or delivering artifacts externally. Work decomposition, dependency planning, and safe-parallelism judgment remain declarative Block 1.2 semantics.
 - An Olympus memory subsystem, skills/capability registry, tool registry, policy engine, permission subsystem, or approval engine.
 - Events, a state machine, persistent runtime state, databases, services, APIs, Mission Control/UI, MCP, A2A, or distributed runtime.
 
-Hermes-Main's existing facilities remain external environment facilities, not Olympus implementations. Session 0 is complete. Session 1 Blocks 1.1 and 1.2 are implemented and validated as declarative roles; Blocks 1.3 (first-domain selection), 1.4 (first Domain Owner), and 1.5 (end-to-end validation) have not started. Context & Memory is deferred to Session 3, Skills & Capabilities to Session 4, and observability/Mission Control to later sessions. Further implementation requires a separately approved block.
+Hermes-Main's existing facilities remain external environment facilities, not Olympus implementations. Session 0 is complete. Session 1 Blocks 1.1 and 1.2 are implemented and validated as declarative roles; Block 1.3 promotes and validates the first Domain; Block 1.4 implements and validates its first declarative Owner, separately and together with the Domain contract. [Block 1.5](block-1.5.md) executes end-to-end host-side validation with retained inputs, raw outputs, prompt hashes, assertions and exact results; no persistent Olympus runtime is introduced. Context & Memory is deferred to Session 3, Skills & Capabilities to Session 4, and observability/Mission Control to later sessions. Further implementation requires a separately approved block.
