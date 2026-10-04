@@ -123,7 +123,7 @@ The handoff is a host-supplied validation fixture, not the result of an executed
 
 ## Observed validation — 2026-10-04
 
-Twenty-nine fresh Owner-only conversations and four fresh Domain+Owner consistency conversations completed on the existing `openai-codex` / `gpt-6.1-sol` route for the final prompt; all passed. The Domain-only eight-case run preceded Owner implementation, as recorded in [Block 1.3](domains.md). An initial 24-case Owner run and four pair cases also passed; input fixtures were subsequently made internally consistent for primary-routing cases, prompt field/type expectations were clarified, and five edge cases were added before the final full rerun.
+Twenty-nine fresh Owner-only conversations and four fresh Domain+Owner consistency conversations completed on the existing `openai-codex` / `gpt-6.1-sol` route for the final prompt; all passed. The Domain-only eight-case run preceded Owner implementation, as recorded in [Block 1.3](domains.md). An initial 24-case Owner run and four pair cases also passed; input fixtures were subsequently made internally consistent for primary-routing cases, prompt field/type expectations were clarified, and five edge cases were added before the final full rerun. Standards self-review then identified ambiguous `clarify` versus `blocked` precedence for missing execution evidence. The prompt now explicitly reserves admission/assignment/intent correction for `clarify` and missing essential execution evidence on a valid assignment for `blocked`. All eight Domain-only, 29 Owner-only, and four pair cases were rerun after that fix and passed with the statuses shown below; separate Standards and Intent/Spec re-review found no unresolved findings.
 
 The base fixture above was used with the following replacements/additions. Primary-outcome cases replace objective, in-scope work, assigned objective, criteria, decisions, first action, and context consistently; they are intentional wrong-Domain assignments, not an implicit format-based professional claim. Supporting-need cases assign only an independent professional update within the booking application initiative, not delivery of a complete app.
 
@@ -166,7 +166,7 @@ All 33 final Owner/pair responses were parsed with the host's safe `ruamel.yaml`
 Validated Owner prompt SHA-256 (UTF-8 normalized-newline text loaded by `Path.read_text`):
 
 ```text
-0b338f40c68dbe0e53a325283cf0b641a7dbe3e9992696b9c2afe34949aefc5c
+651a4a80355fd89d7b3ed5cf1cdeea06ad79cda873730bbd39a2f69519a56726
 ```
 
 The paired Domain hash is the Block 1.3 hash recorded in [domains.md](domains.md). Inputs, raw responses, and assertion code remain host-local scratch evidence, not an Olympus runner, runtime trajectory, memory store, or dependency. There is no repository application/build/test stack to execute; static YAML/example/link/diff checks supplement these real native model runs. Observations do not provide deterministic enforcement, exhaustive adversarial coverage, authenticated authorization, or guaranteed repeatability.
