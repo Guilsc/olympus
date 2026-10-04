@@ -4,6 +4,7 @@ Olympus is a system intended to be modular, extensible, governable, and theme-in
 
 Foundation Contract v0.1 is the current architectural baseline. Canonical architecture is separate from the narrative/theme layer and from runtime instances. Block 0.2 established the clean foundation. Block 1.1 adds only a declarative `governor` role, evaluated through the existing Hermes-Main environment; no Olympus runtime orchestration or domain execution is implemented.
 
+- [Foundation overview](docs/foundation.md): architecture, canonical roles, scope gate, and current technical baseline.
 - [Constitution](docs/CONSTITUTION.md): the eight approved stable architectural principles.
 - [Architecture](docs/architecture.md): Foundation v0.1 concepts and scope boundaries.
 - [Theme](config/theme.yaml): the approved Olympus narrative aliases.
