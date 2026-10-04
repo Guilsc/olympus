@@ -99,3 +99,9 @@ All eight completed, returned parseable duplicate-key-rejecting safe YAML with e
 ```
 
 These are observed model-backed behaviors, not deterministic routing, exhaustive enforcement, authenticated authority, or repeatability guarantees. This is Domain-only validation; Owner validation and pairwise contract consistency are separate Block 1.4 evidence, not Block 1.5 end-to-end execution.
+
+## Current sequential expansion availability
+
+Declarative Domain/Owner contracts currently available: `professional_delivery` / `professional_delivery_owner`, `research_learning` / `research_learning_owner`. Availability means a definition, not a persistent agent instance, invoked consultation, retrieval, execution or dispatch. Other outcome responsibilities may be named as conceptual routing references.
+
+Expansion validation and reviews are recorded in [the expansion evidence](realm-expansion.md). Earlier Block observations and immutable Block 1.5 evidence remain historical records, not statements that the new Owners were available then. Worker, persistent runtime, memory, capabilities and release automation remain deferred.

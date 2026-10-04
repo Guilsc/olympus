@@ -95,3 +95,9 @@ Planning Room is a reusable logical collaboration capability, not an implemented
 - Events, a state machine, persistent runtime state, databases, services, APIs, Mission Control/UI, MCP, A2A, or distributed runtime.
 
 Hermes-Main's existing facilities remain external environment facilities, not Olympus implementations. Session 0 is complete. Session 1 Blocks 1.1 and 1.2 are implemented and validated as declarative roles; Block 1.3 promotes and validates the first Domain; Block 1.4 implements and validates its first declarative Owner, separately and together with the Domain contract. [Block 1.5](block-1.5.md) executes end-to-end host-side validation with retained inputs, raw outputs, prompt hashes, assertions and exact results; no persistent Olympus runtime is introduced. Context & Memory is deferred to Session 3, Skills & Capabilities to Session 4, and observability/Mission Control to later sessions. Further implementation requires a separately approved block.
+
+## Current sequential expansion availability
+
+Declarative Domain/Owner contracts currently available: `professional_delivery` / `professional_delivery_owner`, `research_learning` / `research_learning_owner`. Availability means a definition, not a persistent agent instance, invoked consultation, retrieval, execution or dispatch. Other outcome responsibilities may be named as conceptual routing references.
+
+Expansion validation and reviews are recorded in [the expansion evidence](realm-expansion.md). Earlier Block observations and immutable Block 1.5 evidence remain historical records, not statements that the new Owners were available then. Worker, persistent runtime, memory, capabilities and release automation remain deferred.

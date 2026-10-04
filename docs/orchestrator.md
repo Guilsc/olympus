@@ -229,3 +229,9 @@ Reference only: a future Worker as a temporary, reduced, bounded projection of i
 Deferred at Block 1.2: actual Realm Owners/first-domain selection (subsequently defined and declaratively validated in Blocks 1.3/1.4), end-to-end validation (subsequently executed as [Block 1.5 host-side validation](block-1.5.md)), runtime assembly at a future approved milestone, persistent orchestrator instance, runtime handoff/persistence, Context & Memory (Session 3), Agent Memory, Shared Second Brain/Librarian, Skills & Capabilities (Session 4), skill acquisition, PM installations, persistent Planning Room chat, Board/Mission Control, observability platform, event bus, database, and distributed runtime. The previous `Olympus_OS` remains historical reference only.
 
 The approved planning concepts were informed by `mattpocock/skills` (grilling, grill-with-docs, domain-modeling, wayfinder) and `phuryn/pm-skills` (create-prd, strategy-red-team, pre-mortem, prioritization-frameworks, sprint-plan, wwas, related planning material). They are design references, not Olympus runtime dependencies. No external skill text was copied wholesale or installed into Olympus; the approved Block 1.2 requirements define behavior.
+
+## Current sequential expansion availability
+
+Declarative Domain/Owner contracts currently available: `professional_delivery` / `professional_delivery_owner`, `research_learning` / `research_learning_owner`. Availability means a definition, not a persistent agent instance, invoked consultation, retrieval, execution or dispatch. Other outcome responsibilities may be named as conceptual routing references.
+
+Expansion validation and reviews are recorded in [the expansion evidence](realm-expansion.md). Earlier Block observations and immutable Block 1.5 evidence remain historical records, not statements that the new Owners were available then. Worker, persistent runtime, memory, capabilities and release automation remain deferred.
