@@ -8,7 +8,7 @@ A Domain is an outcome-oriented responsibility, not an artifact category or bag 
 |---|---|---|---|
 | `professional_delivery` | Work | Apollo | **PROMOTED** — concrete professional accepted outcomes |
 | `research_learning` | Studies | Athena | **PROMOTED** — research, learning, evidence, synthesis, knowledge |
-| `personal_life` | Personal | Hestia | **REFERENCE ONLY** — personal projects and life/home outcomes |
+| `personal_life` | Personal | Hestia | **PROMOTED** — personal projects and life/home outcomes |
 | `systems_automation` | Automations | Hephaestus | **REFERENCE ONLY** — persistent automation, integrations, workflows, operations |
 | `experimentation` | Lab | Prometheus | **REFERENCE ONLY** — uncertainty reduction, experiments, prototypes, PoCs |
 | `creative_media` | Creative & Media | Aphrodite | **REFERENCE ONLY** — visual/media expression and audience-facing assets |

@@ -9,3 +9,6 @@ domains:
   research_learning:
     display_name: Studies
     theme_owner: Athena
+  personal_life:
+    display_name: Personal
+    theme_owner: Hestia
