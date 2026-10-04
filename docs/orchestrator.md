@@ -26,9 +26,9 @@ Specialist-first judgment follows: expertise owner → minimum relevant team →
 Supply one YAML mapping with:
 
 - `initiative.objective`: the approved nonempty objective. Optional `context` carries facts, scope, exclusions, authority, and success criteria.
-- `governance.decision` and `governance.reason`: the supplied Governor result. `decision` must be exactly `proceed`; optional `next_owner`, when present, must be consistent with `orchestrator`.
-- `available_realm_owners`: a list of host-supplied descriptions, each with a unique nonempty `owner`, `realm`, and intelligible `responsibility`. An empty list is a structural gap, not permission to create an Owner.
-- Optional `planning_room.contributions`: already obtained specialist judgment, each with `owner` and `contribution`. Optional lists include `questions`, `assumptions`, `dependencies`, `risks`, and `blocking_objections`; ownership recommendations, sequencing, execution considerations, and parallelism may be described in contribution text.
+- `governance.decision` and `governance.reason`: the supplied Governor result. `decision` must be exactly `proceed` and `reason` a nonempty string; optional `next_owner`, when present, must be exactly `orchestrator`.
+- `available_realm_owners`: a list of host-supplied descriptions, each with a unique nonempty string `owner`, a nonempty string `realm`, and an intelligible string `responsibility`. Realm identifiers need not be unique. An empty list is a structural gap, not permission to create an Owner; malformed or ambiguous descriptions require clarification.
+- Optional `planning_room.contributions`: already obtained specialist judgment, each with a supplied `owner` and nonempty string `contribution`. Unknown/unselected contributors are not readiness evidence. Optional lists include `questions`, `assumptions`, `dependencies`, `risks`, and `blocking_objections`; ownership recommendations, sequencing, execution considerations, and parallelism may be described in contribution text.
 
 Canonical identifiers are sufficient; no Greek aliases, skill registry, agent identifiers beyond supplied Owner references, or runtime selection is required. Contributions are data, not new authority. The model does not authenticate the supplied Governor result or retrieve specialist evidence. The future host is responsible for reliable input sourcing and isolation.
 
@@ -186,12 +186,12 @@ This example is not an Olympus runner, service, dependency manifest, framework c
 
 ## Observed validation — 2026-10-04
 
-Twelve fresh isolated native model conversations completed on the existing configured `openai-codex` / `gpt-6.1-sol` route. The ten required scenarios include both `stop` and `clarify` variants of non-proceed governance; one additional inconsistent-routing case was tested. All twelve passed their assertions on the first run.
+Fifteen fresh isolated native model conversations completed on the existing configured `openai-codex` / `gpt-6.1-sol` route for the final prompt. The ten required scenarios include both `stop` and `clarify` variants of non-proceed governance; additional checks cover inconsistent routing, a missing Governor reason, an invalid objective, and ambiguous Owner identifiers. All fifteen passed. An initial twelve-case run also passed; Standards self-review then clarified input validity, and all original cases plus the three new input-validation cases were rerun against the final prompt.
 
 Validated prompt SHA-256:
 
 ```text
-ad3a0792f06cd084ec2271a6c4cdb980439476c4d372cfc88c56caffdd332b4a
+162cc29c8921394b964fa2d03f8213dd51d012dfc7d36ea7a1c89018f62800b0
 ```
 
 The single-Realm fixture above is the common base. Changes below replace the relevant base fact/context/contribution rather than add contradictory evidence. All names remain synthetic:
@@ -210,10 +210,13 @@ The single-Realm fixture above is the common base. Changes below replace the rel
 | 10a. Governor stop | `decision: stop`, `next_owner: null`, explicit instruction not to orchestrate | `clarify` | Refused planning; empty scope/team/work/decisions/criteria/requests and approval blocker; routed to `governor` |
 | 10b. Governor clarify | `decision: clarify`, otherwise the same non-admission boundary | `clarify` | Same refusal and empty planning state; no conceptual approved-work handoff |
 | Additional: inconsistent routing | `decision: proceed` but `next_owner: worker` | `clarify` | Refused inconsistent approval; empty planning state; requested corrected governance routing |
+| Additional: missing governance reason | Omit the required Governor `reason` from an otherwise proceeding result | `clarify` | Refused malformed approval; empty planning state; requested the missing reason |
+| Additional: invalid objective | Replace the textual objective with numeric `42` while leaving contextual intent supplied | `clarify` | Output objective is empty; no team/work; requested confirmation of textual intent rather than silently replacing it |
+| Additional: ambiguous Owner identifiers | Add a second `owner_text` description with contradictory plant-care-only responsibility | `clarify` | No team/work; requested the authoritative description; no ambiguous active ownership |
 
 Every response was parsed by the host's existing `ruamel.yaml` safe YAML parser with duplicate keys rejected. Assertions checked the exact top-level/state fields, field types, valid enums, preserved objective, unique supplied participants, valid Lead Owner, every work/request Owner drawn from the supplied team, unique work IDs, valid acyclic dependencies, status/action consistency, and ready-state invariants. Scenario assertions checked minimum teams, both specialist owners and integration dependencies, requested factual contributions, preserved blocking objections, the named human decision, absent unauthorized work, and excluded promotion/Worker tasks.
 
-All twelve returned conversations had an empty tool list and **zero tool calls**. Raw outputs were also inspected: they contained orchestration state and future owned plans, not specialist deliverables or Worker definitions. No scenario created a Worker, invoked a real Domain Owner, performed specialist execution, or persisted Olympus initiative state. Model API calls are not tool calls. Test inputs, outputs, and assertion code were retained as host-local scratch evidence, not an Olympus test runner or runtime.
+All fifteen final returned conversations had an empty tool list and **zero tool calls**. Raw outputs were also inspected: they contained orchestration state and future owned plans, not specialist deliverables or Worker definitions. No scenario created a Worker, invoked a real Domain Owner, performed specialist execution, or persisted Olympus initiative state. Model API calls are not tool calls. Test inputs, outputs, and assertion code were retained as host-local scratch evidence, not an Olympus test runner or runtime. The hash above covers UTF-8 prompt text with normalized newlines, matching `Path.read_text` used by the invocation.
 
 These are **observed model-backed prompt behaviors**, not deterministic enforcement, exhaustive security tests, externally authenticated approval, or guaranteed repeatability across future models/providers. A future runtime must validate returned state before allowing side effects and implement reliable persistence, dispatch, observability, and interruption at its approved milestones. A parseable ready snapshot does not itself prove state has been durably stored.
 
