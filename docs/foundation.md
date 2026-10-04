@@ -16,8 +16,8 @@ The [Constitution](CONSTITUTION.md) contains the eight approved principles; [arc
 
 | Canonical role | Olympus alias | Current status |
 |---|---|---|
-| `governor` | Zeus | Minimal declarative governance prompt implemented in Block 1.1 |
-| `orchestrator` | Hermes | Approved role; implementation deferred |
+| `governor` | Zeus | Minimal declarative governance prompt implemented and validated in Block 1.1 |
+| `orchestrator` | Hermes | Minimal declarative orchestration prompt implemented and validated in Block 1.2; no persistent runtime instance |
 | `domain_owner` | None selected | Approved role; no first domain or Domain Owner implemented |
 | `worker` | None selected | **REFERENCE ONLY**; implementation and operational semantics deferred until a demonstrated delegation need exists |
 
@@ -41,7 +41,7 @@ The [minimal Governor](governor.md) evaluates an initiative and returns `decisio
 
 Zeus governs but does not execute the initiative, decompose work, select a Domain Owner, choose tools or models, or orchestrate a runtime. It may recommend future structural evolution, but cannot create it autonomously.
 
-Hermes names the approved Olympus `orchestrator` role, which remains unimplemented. A Governor decision naming `orchestrator` is conceptual ownership, not an executed handoff. Worker is not part of the current implementation commitment.
+Hermes names the canonical Olympus `orchestrator` role. The [minimal Orchestrator](orchestrator.md) turns approved intent into bounded, owned, dependency-aware planning state. It selects a minimum useful team and one Lead Owner, facilitates a logical Planning Room, preserves blockers, and judges readiness. Its `planning`, `clarify`, or `ready` result is a machine-readable snapshot suitable for future persistence. Governor routing and Orchestrator handoff are conceptual, not real runtime dispatch. Worker is not part of the current implementation commitment.
 
 ## Complexity Gate
 
@@ -66,26 +66,32 @@ This is the approved future first vertical slice, not an implemented end-to-end 
 
 **Hermes-Main** is the external desktop/software execution environment used to build, validate, commit, and publish Olympus. It is not an Olympus agent.
 
-**Olympus Hermes** is only the narrative alias for canonical `orchestrator`. The future internal orchestration agent is also referred to as Hermes-agent in existing documentation; it does not exist yet. External Hermes-Main functionality must not be presented as an implemented Olympus capability.
+**Olympus Hermes** is only the narrative alias for canonical `orchestrator`. Its declarative role is implemented; its future distinct Olympus-specific runtime instance does not exist yet. There is no third canonical concept derived from the alias. External Hermes-Main functionality must not be presented as an implemented Olympus capability, and Hermes-Main's own identity/profile is not transformed by hosting isolated role evaluations.
 
 ## Current technical baseline
 
-The validated implementation baseline before this documentation update is:
+The Block 1.2 starting baseline is:
 
 ```text
-e411167a234e423845943f2c1b0fd3d0f8848a32
-feat: add minimal governor role
+477f0020a95bb28cd16718d50f9d0f0d59025e2b
+docs: clarify foundation architecture and technical baseline
 ```
 
 Block 0.2 established Foundation documentation and the minimal theme mapping. Block 1.1 added [`config/governor.md`](../config/governor.md), evaluated through the existing Hermes-Main native `AIAgent` with no tools, context files or memory, and background review disabled. Input is `initiative.objective`, with optional context only when needed. The documented scenarios validated decisions without tool calls or domain execution.
 
-This is a model-backed prompt, not deterministic policy enforcement or external authorization verification. No separate Olympus application stack, dependency manifest, runner, or runtime orchestration has been introduced. This update changes documentation only.
+Block 1.2 adds [`config/orchestrator.md`](../config/orchestrator.md), using the same native no-tools isolation plus no soul identity or trajectory persistence. Input includes the approved initiative, supplied Governor result, synthetic available Owner descriptions, and optional supplied Planning Room contributions. Twelve fresh runs validated the ten required scenarios, including both non-proceed variants and an additional inconsistent-routing check, with no tool calls, specialist execution, Worker creation, or real Domain Owner invocation.
+
+These are model-backed declarative prompts, not deterministic enforcement or external authorization verification. No separate Olympus application stack, dependency manifest, runner, persistent bot, or runtime orchestration has been introduced.
+
+## Planning state and future knowledge
+
+Planning Room is a reusable logical collaboration capability, not an implemented chat service. Each initiative must have isolated context and operational state; host/runtime isolation and persistence wiring remain future work. Initiative State is current scope, ownership, planned work, dependencies, decisions, assumptions, blockers, readiness, and next action. Logs are historical evidence, not canonical current state. Agent Memory is future specialist experience; Shared Second Brain is future reusable organizational knowledge across initiatives/Realms. Neither memory system is implemented. Specialist experience may improve knowledge/capabilities without silently changing identity, responsibility, or authority. A future Board/Mission Control is a view of canonical state, not its source of truth.
 
 ## Intentionally not implemented
 
-- Orchestrator/Hermes, a first Domain Owner or domain, and Worker behavior, configuration, or lifecycle.
-- Runtime handoff, work decomposition, domain execution, parallelism, or the complete target flow.
+- A persistent Orchestrator runtime instance, a first Domain Owner or domain, and Worker behavior, configuration, or lifecycle.
+- Real runtime handoff, specialist domain execution, concurrent execution scheduling, or the complete target flow. Work decomposition, dependency planning, and safe-parallelism judgment are declarative Block 1.2 semantics only.
 - An Olympus memory subsystem, skills/capability registry, tool registry, policy engine, permission subsystem, or approval engine.
 - Events, a state machine, persistent runtime state, databases, services, APIs, Mission Control/UI, MCP, A2A, or distributed runtime.
 
-Hermes-Main's existing facilities remain external environment facilities, not Olympus implementations. Block 1.2 has not started; further implementation requires a separately approved block.
+Hermes-Main's existing facilities remain external environment facilities, not Olympus implementations. Session 0 is complete. Session 1 Blocks 1.1 and 1.2 are implemented and validated as declarative roles; Blocks 1.3 (first-domain selection), 1.4 (first Domain Owner), and 1.5 (end-to-end validation) have not started. Context & Memory is deferred to Session 3, Skills & Capabilities to Session 4, and observability/Mission Control to later sessions. Further implementation requires a separately approved block.

@@ -89,4 +89,4 @@ Fresh native model runs validated the YAML field set, decisions, next owners, no
 
 For D, the observed reason was: `What is the initiative's objective?` No greeting was produced in A, and no scenario invoked tools, an orchestrator, a Domain Owner, or a Worker. B tests an explicit scope restriction; an unfamiliar domain without a prohibition follows the subsequently approved clarification behavior, as demonstrated by the unclear-structure case.
 
-These are observed scenario results, not a claim that a language-model prompt provides exhaustive or deterministic enforcement. Block 1.2 is not implemented.
+These are observed scenario results, not a claim that a language-model prompt provides exhaustive or deterministic enforcement. At Block 1.1 validation, Block 1.2 was not implemented. The subsequently validated [minimal Orchestrator](orchestrator.md) is a declarative role, not a persistent runtime instance or executed handoff; the Governor prompt and its contract remain unchanged.

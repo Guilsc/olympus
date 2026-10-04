@@ -14,7 +14,7 @@ Narrative names are aliases. Architectural roles are canonical.
 
 - **Hermes-Main** is the external desktop/software execution environment used to build Olympus. It is not an Olympus agent.
 - **Hermes** is the Olympus narrative/display alias for the canonical `orchestrator` role, not Hermes-Main.
-- **Hermes-agent** refers to the future internal Olympus orchestration agent. It does not exist yet and is not created in this block.
+- **Runtime Instance** of `orchestrator` will be a distinct future Olympus-specific agent instance. Block 1.2 defines and validates the declarative role, not a persistent instance. There is no third canonical role or agent concept named after the theme alias.
 
 This document uses Hermes-Main explicitly for the external environment and Hermes only for the narrative alias, avoiding ambiguity.
 
@@ -28,7 +28,7 @@ This document uses Hermes-Main explicitly for the external environment and Herme
 - `policy`: an explicit governance constraint.
 - `theme`: the narrative/display layer, separate from canonical architecture.
 
-These terms do not establish schemas, lifecycles, interaction semantics, or runtime entities in this block.
+These Foundation terms do not themselves establish runtime entities or full lifecycles. The minimal [Orchestrator contract](orchestrator.md) introduced in Block 1.2 defines only the required initiative planning-state representation and logical interaction semantics, not a runtime platform.
 
 ## Canonical roles
 
@@ -38,7 +38,7 @@ Current implementation-facing roles recognized by the foundation:
 - `orchestrator`
 - `domain_owner`
 
-Recognition is not implementation: none is implemented in Block 0.2. The approved narrative aliases are `governor` → Zeus and `orchestrator` → Hermes. No Domain Owner alias is selected.
+Recognition is not implementation: none was implemented in Block 0.2. Block 1.1 subsequently implemented and validated the declarative `governor`; Block 1.2 implemented and validated the declarative `orchestrator`. Neither has a persistent Olympus runtime instance. The approved narrative aliases are `governor` → Zeus and `orchestrator` → Hermes. No Domain Owner or first domain is implemented and no Domain Owner alias is selected.
 
 ### worker — REFERENCE ONLY
 
@@ -71,6 +71,10 @@ Result
 ```
 
 Governor, Orchestrator, and Domain Owner refer to the canonical `governor`, `orchestrator`, and `domain_owner` roles. Block 0.2 does not implement this flow. Worker is not part of it.
+
+Block 1.2 adds post-governance understanding, minimum-team and Lead Owner selection, individual active work ownership, dependencies, logical Planning Room facilitation, blockers, plan readiness, machine-readable state, and conceptual handoff. Selected Realm Owners advise; the orchestrator makes bounded coordination decisions. It neither overrides governance nor performs specialist work. Planning uses supplied synthetic specialist descriptions until the first real domain and Domain Owner are approved in Blocks 1.3/1.4. The future runtime must persist state and dispatch work; no actual end-to-end handoff occurs here.
+
+Planning Room is a reusable logical collaboration capability with separate initiative context/state, not persistent chat infrastructure. Initiative State is the current operational snapshot; Logs are historical evidence; Agent Memory is future specialist experience; Shared Second Brain is future organizational knowledge across initiatives and Realms. The latter two remain deferred, and learning must never silently alter identity, responsibility, or authority. A future Board/Mission Control renders canonical state, never replaces it. Context & Memory, Skills & Capabilities, Workers, observability, and runtime infrastructure are not introduced by Block 1.2.
 
 ## Scope review gate
 
