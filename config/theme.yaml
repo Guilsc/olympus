@@ -18,3 +18,6 @@ domains:
   experimentation:
     display_name: Lab
     theme_owner: Prometheus
+  creative_media:
+    display_name: Creative & Media
+    theme_owner: Aphrodite
