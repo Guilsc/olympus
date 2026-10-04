@@ -75,7 +75,7 @@ No folders, movement, persistent runtime, or release automation are implemented.
 
 **REQUIRED NOW:** one canonical Domain file and this Domain/design document, the nine-field contract, mapping references, lifecycle boundaries, and isolated validation evidence. The existing theme file needs only the promoted display/alias mapping. The Domain and Owner contracts remain separate even within one initiative.
 
-**REFERENCE ONLY:** five candidate Domains/Owners, Prometheus modes, conceptual Delivery Workspace, Mnemosyne, Librarian, and Worker. **LIKELY LATER:** runtime dispatch/persistence, capabilities, memory, observability, Board/Mission Control. **NOT NEEDED:** a Domain registry service, additional role taxonomy, execution engine, filesystem lifecycle, or dependency manifest. Block 1.5 is not started.
+**REFERENCE ONLY:** five candidate Domains/Owners, Prometheus modes, conceptual Delivery Workspace, Mnemosyne, Librarian, and Worker. **LIKELY LATER:** runtime dispatch/persistence, capabilities, memory, observability, Board/Mission Control. **NOT NEEDED:** a Domain registry service, additional role taxonomy, execution engine, filesystem lifecycle, or dependency manifest. [Block 1.5](block-1.5.md) subsequently executes host-side chain validation without introducing any deferred subsystem.
 
 ## Observed validation
 

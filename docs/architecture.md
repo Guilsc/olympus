@@ -56,7 +56,7 @@ The Governor applies or consults governance. The Governor is not the Control Pla
 
 ## First vertical slice boundary
 
-The approved future target is:
+The approved target, exercised as [Block 1.5 host-side validation](block-1.5.md), is:
 
 ```text
 User
@@ -72,7 +72,7 @@ Result
 
 Governor, Orchestrator, and Domain Owner refer to the canonical `governor`, `orchestrator`, and `domain_owner` roles. Block 0.2 does not implement this flow. Worker is not part of it.
 
-Block 1.2 adds post-governance understanding, minimum-team and Lead Owner selection, individual active work ownership, dependencies, logical Planning Room facilitation, blockers, plan readiness, machine-readable state, and conceptual handoff. Selected Realm Owners advise; the orchestrator makes bounded coordination decisions. It neither overrides governance nor performs specialist work. Block 1.2 planning validation used supplied synthetic specialist descriptions; Blocks 1.3/1.4 subsequently promote and validate the first real Domain and its declarative Owner. The host may describe `professional_delivery_owner` using the existing available-owner input contract (`realm: professional_delivery`); that legacy field denotes the canonical Domain, not a second taxonomy. Other candidate Domains/Owners remain conceptual references. The future runtime must persist state and dispatch work; no actual end-to-end handoff occurs here. Pairwise Domain/Owner consistency validation is not Block 1.5 execution.
+Block 1.2 adds post-governance understanding, minimum-team and Lead Owner selection, individual active work ownership, dependencies, logical Planning Room facilitation, blockers, plan readiness, machine-readable state, and conceptual handoff. Selected Realm Owners advise; the orchestrator makes bounded coordination decisions. It neither overrides governance nor performs specialist work. Block 1.2 planning validation used supplied synthetic specialist descriptions; Blocks 1.3/1.4 subsequently promote and validate the first real Domain and its declarative Owner. The host may describe `professional_delivery_owner` using the existing available-owner input contract (`realm: professional_delivery`); that legacy field denotes the canonical Domain, not a second taxonomy. Other candidate Domains/Owners remain conceptual references. The future runtime must persist state and dispatch work; no actual end-to-end handoff occurred in Blocks 1.2–1.4. Pairwise Domain/Owner consistency validation is not Block 1.5 execution. Block 1.5 now passes actual Governor and Orchestrator outputs unchanged into fresh downstream native role conversations and records the resulting Owner artifacts/refusals. This external host experiment does not implement a persistent Olympus runtime, production dispatcher, persistence or approval/release system.
 
 Planning Room is a reusable logical collaboration capability with separate initiative context/state, not persistent chat infrastructure. Initiative State is the current operational snapshot; Logs are historical evidence; Agent Memory is future specialist experience; Shared Second Brain is future organizational knowledge across initiatives and Realms. The latter two remain deferred, and learning must never silently alter identity, responsibility, or authority. A future Board/Mission Control renders canonical state, never replaces it. Context & Memory, Skills & Capabilities, Workers, observability, and runtime infrastructure are not introduced by Block 1.2.
 
