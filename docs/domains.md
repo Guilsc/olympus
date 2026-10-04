@@ -13,7 +13,7 @@ A Domain is an outcome-oriented responsibility, not an artifact category or bag 
 | `experimentation` | Lab | Prometheus | **PROMOTED** — uncertainty reduction, experiments, prototypes, PoCs |
 | `creative_media` | Creative & Media | Aphrodite | **PROMOTED** — visual/media expression and audience-facing assets |
 
-Promotion defines the Domain contract, not a runtime or Owner role. Block 1.4 separately implements and validates the [first declarative Owner](domain-owner.md); the other five Owners are not available, installed, or instantiated. Zeus (`governor`) and Hermes (`orchestrator`) have Olympus-wide governance/orchestration responsibilities, not specialist Realms. There is no `olympus` Domain.
+Promotion defines the Domain contract, not a runtime or Owner role. Block 1.4 implemented and validated the [first declarative Owner](domain-owner.md). The [bounded sequential expansion](realm-expansion.md) now defines and validates the other five Domain/Owner pairs; all six are declaratively available, none is a persistent runtime instance. Zeus (`governor`) and Hermes (`orchestrator`) have Olympus-wide governance/orchestration responsibilities, not specialist Realms. There is no `olympus` Domain.
 
 The generic small Domain / Realm Contract has nine fields:
 
@@ -42,14 +42,14 @@ User-consumable outputs follow `DRAFT → REVIEW → APPROVED → RELEASED`:
 
 REVIEW depends on the artifact: software tests/preview/UAT, creative visual/content review, automation dry run/test execution, documents editorial/evidence review. Technical environments such as dev/test/UAT/production apply conditionally to artifacts that actually execute; they are not the universal lifecycle. Producing never equals approving; approving never equals releasing. These are contract semantics, not a state machine or filesystem automation.
 
-## Prometheus / Lab — REFERENCE ONLY
+## Prometheus / Lab — declarative responsibility
 
-Prometheus is the theme alias for the candidate `experimentation` Owner: an experimental/R&D sandbox, not the universal reviewer or QA gate. Two future conceptual modes:
+Prometheus is the theme alias for the declarative `experimentation_owner`: bounded uncertainty reduction, not the universal reviewer or QA gate. Its contract preserves two responsibility contexts, not implemented experiment-execution runtimes:
 
 1. **Independent Lab:** a bounded experiment may precede an initiative. It may return hypothesis, prototype, evidence, limitations, risks, and recommendation. Disposition: discard, continue experimenting, or propose promotion. Promotion must pass through the Governor / Zeus as a governed initiative.
 2. **Initiative-bound experiment:** an active Domain Owner may identify a bounded uncertainty question for later experimentation. The candidate returns evidence, prototype, limitations, and recommendation. The original production Domain retains initiative outcome ownership.
 
-Neither mode is instantiated here. The first Owner can identify such a need via orchestration, not impersonate Prometheus or claim an experiment ran.
+Neither context has an experiment-execution runtime here. The declarative Owner can propose a protocol or interpret supplied fictional observations. Another Owner identifies a bounded need through orchestration, not impersonation or a claim that an experiment ran.
 
 ## Delivery Workspace — design contract only
 
@@ -75,7 +75,7 @@ No folders, movement, persistent runtime, or release automation are implemented.
 
 **REQUIRED NOW:** one canonical Domain file and this Domain/design document, the nine-field contract, mapping references, lifecycle boundaries, and isolated validation evidence. The existing theme file needs only the promoted display/alias mapping. The Domain and Owner contracts remain separate even within one initiative.
 
-**REFERENCE ONLY:** five candidate Domains/Owners, Prometheus modes, conceptual Delivery Workspace, Mnemosyne, Librarian, and Worker. **LIKELY LATER:** runtime dispatch/persistence, capabilities, memory, observability, Board/Mission Control. **NOT NEEDED:** a Domain registry service, additional role taxonomy, execution engine, filesystem lifecycle, or dependency manifest. [Block 1.5](block-1.5.md) subsequently executes host-side chain validation without introducing any deferred subsystem.
+**REFERENCE ONLY:** experiment-execution runtimes, conceptual Delivery Workspace, Mnemosyne, Librarian, and Worker. The five additional Domain/Owner definitions and their isolated validation are REQUIRED NOW only for the separately authorized bounded expansion. **LIKELY LATER:** runtime dispatch/persistence, capabilities, memory, observability, Board/Mission Control. **NOT NEEDED:** a Domain registry service, additional role taxonomy, execution engine, filesystem lifecycle, or dependency manifest. [Block 1.5](block-1.5.md) subsequently executes host-side chain validation without introducing any deferred subsystem.
 
 ## Observed validation
 

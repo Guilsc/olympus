@@ -18,10 +18,10 @@ The [Constitution](CONSTITUTION.md) contains the eight approved principles; [arc
 |---|---|---|
 | `governor` | Zeus | Minimal declarative governance prompt implemented and validated in Block 1.1 |
 | `orchestrator` | Hermes | Minimal declarative orchestration prompt implemented and validated in Block 1.2; no persistent runtime instance |
-| `domain_owner` | Apollo for `professional_delivery` | First declarative Owner implemented and validated in Block 1.4; functional identifier `professional_delivery_owner`, no persistent runtime |
+| `domain_owner` | Apollo, Athena, Hestia, Hephaestus, Prometheus, Aphrodite | Six separately bound declarative Domain/Owner contracts available and validated; see [expansion evidence](realm-expansion.md). No persistent runtime |
 | `worker` | None selected | **REFERENCE ONLY**; implementation and operational semantics deferred until a demonstrated delegation need exists |
 
-The [theme configuration](../config/theme.yaml) keeps `governor` → Zeus and `orchestrator` → Hermes and adds the promoted Domain's Work/Apollo display mapping. Narrative aliases do not replace canonical identifiers in decisions or ownership.
+The [theme configuration](../config/theme.yaml) keeps `governor` → Zeus and `orchestrator` → Hermes and maps all six promoted Domain display names and Owner theme aliases. Narrative aliases do not replace canonical identifiers in decisions or ownership.
 
 ## Conceptual responsibility planes
 
