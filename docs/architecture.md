@@ -22,7 +22,7 @@ This document uses Hermes-Main explicitly for the external environment and Herme
 
 - `agent`: an agent concept, distinct from its role and narrative alias.
 - `role`: a canonical architectural responsibility.
-- `domain`: an area of responsibility; no first domain is selected.
+- `domain`: an outcome-oriented area of responsibility; Block 1.3 promotes `professional_delivery` (display Work, current theme Owner alias Apollo). Other candidate Domains remain reference only; see [Domain contracts](domains.md).
 - `initiative`: an undertaking described within the architecture.
 - `task`: a unit of work.
 - `policy`: an explicit governance constraint.
@@ -38,7 +38,7 @@ Current implementation-facing roles recognized by the foundation:
 - `orchestrator`
 - `domain_owner`
 
-Recognition is not implementation: none was implemented in Block 0.2. Block 1.1 subsequently implemented and validated the declarative `governor`; Block 1.2 implemented and validated the declarative `orchestrator`. Neither has a persistent Olympus runtime instance. The approved narrative aliases are `governor` → Zeus and `orchestrator` → Hermes. No Domain Owner or first domain is implemented and no Domain Owner alias is selected.
+Recognition is not implementation: none was implemented in Block 0.2. Block 1.1 subsequently implemented and validated the declarative `governor`; Block 1.2 implemented and validated the declarative `orchestrator`. Neither has a persistent Olympus runtime instance. The approved narrative aliases are `governor` → Zeus and `orchestrator` → Hermes. No Domain Owner is implemented yet; Block 1.3 promotes the `professional_delivery` Domain (Work), with Apollo selected only as its future Owner theme alias.
 
 ### worker — REFERENCE ONLY
 

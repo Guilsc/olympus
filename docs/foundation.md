@@ -18,10 +18,10 @@ The [Constitution](CONSTITUTION.md) contains the eight approved principles; [arc
 |---|---|---|
 | `governor` | Zeus | Minimal declarative governance prompt implemented and validated in Block 1.1 |
 | `orchestrator` | Hermes | Minimal declarative orchestration prompt implemented and validated in Block 1.2; no persistent runtime instance |
-| `domain_owner` | None selected | Approved role; no first domain or Domain Owner implemented |
+| `domain_owner` | Apollo for `professional_delivery` | Approved role; first Domain promoted in Block 1.3, Owner implementation follows in Block 1.4 |
 | `worker` | None selected | **REFERENCE ONLY**; implementation and operational semantics deferred until a demonstrated delegation need exists |
 
-The [theme configuration](../config/theme.yaml) contains only `governor` → Zeus and `orchestrator` → Hermes. Narrative aliases do not replace canonical identifiers in decisions or ownership.
+The [theme configuration](../config/theme.yaml) keeps `governor` → Zeus and `orchestrator` → Hermes and adds the promoted Domain's Work/Apollo display mapping. Narrative aliases do not replace canonical identifiers in decisions or ownership.
 
 ## Conceptual responsibility planes
 
@@ -89,9 +89,9 @@ Planning Room is a reusable logical collaboration capability, not an implemented
 
 ## Intentionally not implemented
 
-- A persistent Orchestrator runtime instance, a first Domain Owner or domain, and Worker behavior, configuration, or lifecycle.
+- A persistent Orchestrator runtime instance, an implemented first Domain Owner, and Worker behavior, configuration, or lifecycle. Block 1.3 selects and validates the first Domain separately; see [Domain contract/design](domains.md).
 - Real runtime handoff, specialist domain execution, concurrent execution scheduling, or the complete target flow. Work decomposition, dependency planning, and safe-parallelism judgment are declarative Block 1.2 semantics only.
 - An Olympus memory subsystem, skills/capability registry, tool registry, policy engine, permission subsystem, or approval engine.
 - Events, a state machine, persistent runtime state, databases, services, APIs, Mission Control/UI, MCP, A2A, or distributed runtime.
 
-Hermes-Main's existing facilities remain external environment facilities, not Olympus implementations. Session 0 is complete. Session 1 Blocks 1.1 and 1.2 are implemented and validated as declarative roles; Blocks 1.3 (first-domain selection), 1.4 (first Domain Owner), and 1.5 (end-to-end validation) have not started. Context & Memory is deferred to Session 3, Skills & Capabilities to Session 4, and observability/Mission Control to later sessions. Further implementation requires a separately approved block.
+Hermes-Main's existing facilities remain external environment facilities, not Olympus implementations. Session 0 is complete. Session 1 Blocks 1.1 and 1.2 are implemented and validated as declarative roles; Block 1.3 promotes and validates the first Domain. Blocks 1.4 (first Domain Owner) and 1.5 (end-to-end validation) have not started. Context & Memory is deferred to Session 3, Skills & Capabilities to Session 4, and observability/Mission Control to later sessions. Further implementation requires a separately approved block.
