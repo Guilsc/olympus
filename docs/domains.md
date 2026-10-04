@@ -10,7 +10,7 @@ A Domain is an outcome-oriented responsibility, not an artifact category or bag 
 | `research_learning` | Studies | Athena | **PROMOTED** — research, learning, evidence, synthesis, knowledge |
 | `personal_life` | Personal | Hestia | **PROMOTED** — personal projects and life/home outcomes |
 | `systems_automation` | Automations | Hephaestus | **PROMOTED** — persistent automation, integrations, workflows, operations |
-| `experimentation` | Lab | Prometheus | **REFERENCE ONLY** — uncertainty reduction, experiments, prototypes, PoCs |
+| `experimentation` | Lab | Prometheus | **PROMOTED** — uncertainty reduction, experiments, prototypes, PoCs |
 | `creative_media` | Creative & Media | Aphrodite | **REFERENCE ONLY** — visual/media expression and audience-facing assets |
 
 Promotion defines the Domain contract, not a runtime or Owner role. Block 1.4 separately implements and validates the [first declarative Owner](domain-owner.md); the other five Owners are not available, installed, or instantiated. Zeus (`governor`) and Hermes (`orchestrator`) have Olympus-wide governance/orchestration responsibilities, not specialist Realms. There is no `olympus` Domain.

@@ -15,3 +15,6 @@ domains:
   systems_automation:
     display_name: Automations
     theme_owner: Hephaestus
+  experimentation:
+    display_name: Lab
+    theme_owner: Prometheus
