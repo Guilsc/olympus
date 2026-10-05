@@ -10,8 +10,15 @@ Foundation Contract v0.1 is the current architectural baseline. Canonical archit
 - [Theme](config/theme.yaml): the approved Olympus narrative aliases.
 - [End-to-end validation](docs/block-1.5.md): executed host-side chains, exact scenario results, raw evidence, limitations, and the pre-merge gate.
 - [Minimal Governor](docs/governor.md): role prompt, native invocation, decision contract, and validation.
-- [Specialist Domains](docs/domains.md): first Domain, candidate mappings, artifact lifecycle, and reference-only Lab/workspace concepts.
-- [First Domain Owner](docs/domain-owner.md): professional-delivery responsibility, ready-handoff input, bounded result/lifecycle contract, and isolated validation.
+- [Specialist Domains](docs/domains.md): six promoted outcome contracts, theme mappings, artifact lifecycle, declarative Lab responsibilities and deferred workspace concepts.
+- [First Domain Owner](docs/domain-owner.md): historical Apollo bootstrap, shared ready-handoff and bounded result/lifecycle contracts.
+- [Sequential expansion](docs/realm-expansion.md): five additional Domain/Owner pairs, per-entry and integrated validation, corrections, self-reviews and limitations.
 - [Minimal Orchestrator](docs/orchestrator.md): specialist-first planning, logical Planning Room, initiative-state contract, conceptual handoff, and synthetic validation.
 
 Construction proceeds through approved blocks. By default, one approved implementation block maps to one atomic Git commit. GitHub serves as the canonical chronological construction history of Olympus, beginning with this foundation commit. Block 0.2 does not implement the first vertical slice.
+
+## Current sequential expansion availability
+
+Declarative Domain/Owner contracts currently available: `professional_delivery` / `professional_delivery_owner`, `research_learning` / `research_learning_owner`, `personal_life` / `personal_life_owner`, `systems_automation` / `systems_automation_owner`, `experimentation` / `experimentation_owner`, `creative_media` / `creative_media_owner`. Availability means a definition, not a persistent agent instance, invoked consultation, retrieval, execution or dispatch. Other outcome responsibilities may be named as conceptual routing references.
+
+Expansion validation and reviews are recorded in [the expansion evidence](docs/realm-expansion.md). Earlier Block observations and immutable Block 1.5 evidence remain historical records, not statements that the new Owners were available then. Worker, persistent runtime, memory, capabilities and release automation remain deferred.

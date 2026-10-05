@@ -21,7 +21,7 @@ lead_when:
   - The primary intended outcome is a concrete professional result; artifact type, tool, format, or technique does not determine ownership.
   - This Domain remains accountable for the requested professional outcome if supporting contributions disappear.
 collaborates_when:
-  - Another candidate Domain owns a bounded supporting contribution needed for the professional outcome; identify that need through orchestration without instantiating its future Owner.
+  - Another Domain owns a bounded supporting contribution needed for the professional outcome; identify that need through orchestration without claiming its Owner has been invoked.
   - A bounded uncertainty needs experimentation evidence; retain professional outcome ownership and identify the question, not a Prometheus runtime or universal QA gate.
   - Another Domain leads the primary outcome and a professional-delivery contribution is explicitly assigned within scope; do not claim the entire initiative.
 returns:
@@ -30,4 +30,4 @@ returns:
   - Artifact readiness with approval and release boundaries preserved; producing is not approving and approving is not releasing.
 ```
 
-Only `professional_delivery` is promoted. The five excluded Domains are **REFERENCE ONLY**; their current theme aliases do not denote available Owners. Skills, tools, models, plugins, and integrations are capabilities, not Domain identity. A professional report may belong here; a report whose primary purpose is research belongs to `research_learning`. A software artifact may instead belong to `systems_automation`, `experimentation`, `creative_media`, or `personal_life` according to its intended outcome.
+Declarative Domain/Owner contracts currently available: `professional_delivery` / `professional_delivery_owner`, `research_learning` / `research_learning_owner`, `personal_life` / `personal_life_owner`, `systems_automation` / `systems_automation_owner`, `experimentation` / `experimentation_owner`, `creative_media` / `creative_media_owner`. Availability means a definition, not a persistent agent instance, invoked consultation, retrieval, execution or dispatch. Other outcome responsibilities may be named as conceptual routing references. Skills, tools, models, plugins, and integrations are capabilities, not Domain identity. A professional report may belong here; a report whose primary purpose is research belongs to `research_learning`. A software artifact may instead belong to `systems_automation`, `experimentation`, `creative_media`, or `personal_life` according to its intended outcome.

@@ -18,10 +18,10 @@ The [Constitution](CONSTITUTION.md) contains the eight approved principles; [arc
 |---|---|---|
 | `governor` | Zeus | Minimal declarative governance prompt implemented and validated in Block 1.1 |
 | `orchestrator` | Hermes | Minimal declarative orchestration prompt implemented and validated in Block 1.2; no persistent runtime instance |
-| `domain_owner` | Apollo for `professional_delivery` | First declarative Owner implemented and validated in Block 1.4; functional identifier `professional_delivery_owner`, no persistent runtime |
+| `domain_owner` | Apollo, Athena, Hestia, Hephaestus, Prometheus, Aphrodite | Six separately bound declarative Domain/Owner contracts available and validated; see [expansion evidence](realm-expansion.md). No persistent runtime |
 | `worker` | None selected | **REFERENCE ONLY**; implementation and operational semantics deferred until a demonstrated delegation need exists |
 
-The [theme configuration](../config/theme.yaml) keeps `governor` → Zeus and `orchestrator` → Hermes and adds the promoted Domain's Work/Apollo display mapping. Narrative aliases do not replace canonical identifiers in decisions or ownership.
+The [theme configuration](../config/theme.yaml) keeps `governor` → Zeus and `orchestrator` → Hermes and maps all six promoted Domain display names and Owner theme aliases. Narrative aliases do not replace canonical identifiers in decisions or ownership.
 
 ## Conceptual responsibility planes
 
@@ -95,3 +95,9 @@ Planning Room is a reusable logical collaboration capability, not an implemented
 - Events, a state machine, persistent runtime state, databases, services, APIs, Mission Control/UI, MCP, A2A, or distributed runtime.
 
 Hermes-Main's existing facilities remain external environment facilities, not Olympus implementations. Session 0 is complete. Session 1 Blocks 1.1 and 1.2 are implemented and validated as declarative roles; Block 1.3 promotes and validates the first Domain; Block 1.4 implements and validates its first declarative Owner, separately and together with the Domain contract. [Block 1.5](block-1.5.md) executes end-to-end host-side validation with retained inputs, raw outputs, prompt hashes, assertions and exact results; no persistent Olympus runtime is introduced. Context & Memory is deferred to Session 3, Skills & Capabilities to Session 4, and observability/Mission Control to later sessions. Further implementation requires a separately approved block.
+
+## Current sequential expansion availability
+
+Declarative Domain/Owner contracts currently available: `professional_delivery` / `professional_delivery_owner`, `research_learning` / `research_learning_owner`, `personal_life` / `personal_life_owner`, `systems_automation` / `systems_automation_owner`, `experimentation` / `experimentation_owner`, `creative_media` / `creative_media_owner`. Availability means a definition, not a persistent agent instance, invoked consultation, retrieval, execution or dispatch. Other outcome responsibilities may be named as conceptual routing references.
+
+Expansion validation and reviews are recorded in [the expansion evidence](realm-expansion.md). Earlier Block observations and immutable Block 1.5 evidence remain historical records, not statements that the new Owners were available then. Worker, persistent runtime, memory, capabilities and release automation remain deferred.
