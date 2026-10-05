@@ -56,25 +56,29 @@ The human explicitly resumed the expansion on 2026-10-05 from `f468c42`, with a 
 
 [Separate resumed evidence](validation/realm-expansion-resume.json) retains inputs, raw outputs, failures, retries, original source snapshots, and static checks. Both pending support integrations passed: professional delivery remains the sole Lead Owner, with one independently assigned creative or experimental supporting contribution. Each chain has four fresh conversations and transfers actual upstream YAML unchanged. Together with the five preserved historical primary-outcome integrations, all seven scenarios have passing observations; this is a mixed-configuration result, not seven passing cases on the new configuration.
 
-### Effective configuration
+### Effective configuration and physical model pin
 
 - Historical validation: `openai-codex` / `gpt-6.1-sol`.
-- Resumed native validation: native provider `custom`, requested provider `hermes-tier-1`, model alias `tier1-general-reliable`, via `http://127.0.0.1:20128/v1` (OmniRoute).
+- Earlier resumed combo validation: native `custom`, requested `hermes-tier-1`, alias `tier1-general-reliable`, through OmniRoute. Persisted gateway logs show this was mixed: `codex/gpt-6-astra` and `gemini/gemini-flash-lite-latest` both answered requests. Its 11/19 and 15/19 results remain separate and are not attributed to one model.
+- Final regression: direct `openai-codex` route, resolved model `gpt-6.1-sol`, `codex_responses`, with no combo or fallback. The route resolved to `https://chatgpt.com/backend-api/codex`; no Hermes or OmniRoute infrastructure was changed.
 - Engineering chat runtime: `omnirouter` / `tier1-code-reliable`; this is not the native test configuration.
-- Physical upstream provider/model was not captured by the existing native harness. A combo alias does not establish which physical model answered. No infrastructure settings were changed.
 
-### Apollo regression and unresolved failures
+The complete pinned evidence is in [realm-expansion-apollo-pinned-gpt-6.1-sol.json](validation/realm-expansion-apollo-pinned-gpt-6.1-sol.json), including the source hash, route metadata, raw cases, rate-limit attempts and comparison.
 
-All 19 scenarios were attempted with only compatible availability fixture wording updated. First attempt: **11/19 passed**. One unchanged-fixture retry of each failed case yielded **15/19 latest passing cases**; passing retries do not establish reliability. Four remain failed:
+### Apollo regression — completed on the pinned model
 
-| Scenario | Latest failure |
+The four prior semantic failures were reproduced with the strict validator and then rerun directly on `gpt-6.1-sol`. All four passed without changing YAML handling, canonical identifiers or contract rules:
+
+| Scenario | Direct pinned result |
 |---|---|
-| `dependency_missing_evidence` | Orchestrator returned a noncanonical handoff target |
-| `assignment_wrong_owner` | Orchestrator returned fenced rather than raw YAML |
-| `assignment_only_one_item` | Orchestrator returned a noncanonical handoff target |
-| `late_missing_execution_fact` | Orchestrator returned a noncanonical handoff target |
+| `dependency_missing_evidence` | `proceed → ready → clarify` |
+| `assignment_wrong_owner` | `proceed → ready → clarify` |
+| `assignment_only_one_item` | `proceed → ready → review` |
+| `late_missing_execution_fact` | `proceed → ready → blocked` |
 
-Earlier attempts also included an empty blocker list on a clarification and an incorrect Governor refusal. All raw attempts are retained. Failed gates stop normal downstream execution. These observations do not justify changing Governor/Orchestrator policy or accepting invalid outputs. Further configuration-specific validation is required before merge readiness; no infrastructure repair or runtime adapter is introduced here.
+The full pinned **19/19** Apollo matrix passed, with 893 recorded assertion evaluations. A transient HTTP 429 interrupted an earlier pinned batch; those attempts remain recorded as availability failures and were not counted as semantic passes. After cooldown, the missing cases were rerun in bounded batches and passed.
+
+Comparison with the historical `gpt-6.1-sol` evidence shows no demonstrated contract failure. The demonstrated cause of the earlier four failures was the non-pinned mixed combo route; the strict harness and canonical contract passed when the model was fixed. No production or contract workaround was added.
 
 ### Validation corrections
 
@@ -82,10 +86,8 @@ A mistaken scratch-only relaxation of the canonical next-action assertion was re
 
 ### Standards self-review
 
-The declarative contracts preserve canonical/theme separation, nine-field Domains, eleven-field Owner results, assignment/dependency rules and deferred-runtime boundaries. Static YAML parsing, duplicate-key rejection, Domain exclusions and local links were exercised. Repeated contract wording is intentional standalone-prompt context, not a reason to introduce an executable abstraction. The erroneous test relaxation was corrected. **Unresolved:** the effective native route repeatedly violates existing output contracts; exhaustive final semantic audit is not complete. This is implementer self-review, not independent review. No merge-readiness approval is claimed.
+The declarative contracts preserve canonical/theme separation, nine-field Domains, eleven-field Owner results, assignment/dependency rules and deferred-runtime boundaries. The pinned 19-case matrix passed the unchanged strict validator. Static YAML parsing, duplicate-key rejection, Domain exclusions, local links and whitespace checks passed. Repeated contract wording remains intentional standalone-prompt context. No runtime or infrastructure was introduced. This is implementer self-review, not independent review.
 
 ### Intent/Spec self-review
 
-The five requested definitions and compatibility descriptions preserve the approved architecture and sequential commit structure. The remaining integrations were exercised without fabricated media, experiments or external actions. **Did we build what was requested? Partially:** the declarative expansion is implemented, but the requested successful Apollo regression and complete final validation are not achieved on the effective configuration. Historical passes cannot substitute for those failures. Physical upstream attribution remains unavailable. Publish one draft PR for visibility and retain the human merge boundary.
-
-No merge, auto-merge, runtime assembly, next milestone, Hermes infrastructure change or OmniRoute infrastructure change is authorized or performed.
+The five requested definitions, support integrations, model attribution, strict four-case comparison and complete pinned Apollo regression are recorded without changing YAML or canonical identifiers. **Did we build what was requested? Yes, within the authorized scope.** The prior 11/19 and 15/19 mixed-route results remain preserved as historical limitations, not overwritten. The pinned direct `gpt-6.1-sol` matrix passes 19/19. No merge, auto-merge, runtime assembly, next milestone, Hermes infrastructure change or OmniRoute infrastructure change is authorized or performed.
