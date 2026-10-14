@@ -11,6 +11,10 @@ Desktop.ini
 .env
 .env.*
 
+# Repository-local Python bytecode (no runtime evidence in repository)
+__pycache__/
+*.py[cod]
+
 # Temporary files
 *.tmp
 *.temp
