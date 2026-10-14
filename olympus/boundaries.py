@@ -194,6 +194,20 @@ def supported(value):
     return (value['orchestration_status'] == 'ready' and s['team'] == {'lead_owner': OWNER, 'participating_owners': [OWNER]} and len(s['work']) == 1 and s['work'][0]['owner'] == OWNER and s['work'][0]['depends_on'] == [])
 
 
+def check_unicode(value):
+    if isinstance(value, str):
+        for c in value:
+            if 0xD800 <= ord(c) <= 0xDFFF:
+                raise BoundaryError("Invalid Unicode surrogate")
+    elif isinstance(value, dict):
+        for k, v in value.items():
+            check_unicode(k)
+            check_unicode(v)
+    elif isinstance(value, list):
+        for v in value:
+            check_unicode(v)
+
+
 def parse(raw):
     require(type(raw) is str, 'YAML must be UTF-8 text')
     try:
@@ -238,6 +252,8 @@ def parse(raw):
             except ValueError:
                 raise BoundaryError('Invalid YAML scalar') from None
         require(isinstance(node, nodes.MappingNode), 'One YAML mapping required')
-        return decode(node)
+        result = decode(node)
+        check_unicode(result)
+        return result
     except yaml.YAMLError:
         raise BoundaryError('Malformed YAML') from None

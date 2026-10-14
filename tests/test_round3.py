@@ -1,6 +1,10 @@
 """Restricted third-cycle boundary regressions (offline)."""
 from copy import deepcopy
 import unittest
+import tempfile
+import os
+import json
+from unittest.mock import Mock
 
 import sys
 import traceback
@@ -73,6 +77,11 @@ class Utf8ParserTests(unittest.TestCase):
                 else:
                     self.fail('Invalid UTF-8 was accepted')
 
+    def test_escaped_surrogate_is_safe_boundary_error(self):
+        raw = 'x: "\\uD800"'
+        with self.assertRaisesRegex(BoundaryError, 'Invalid Unicode surrogate'):
+            parse(raw)
+
     def test_valid_unicode_type_and_byte_limits_unchanged(self):
         self.assertEqual(parse('x: ação 漢字 😀'), {'x': 'ação 漢字 😀'})
         for raw, message in ((b'x: 1', 'YAML must be UTF-8 text'), ('x: ' + 'é' * (LIMIT // 2), 'YAML byte limit')):
@@ -119,3 +128,30 @@ class EmptyObjectiveTests(unittest.TestCase):
             value = {'initiative': {'objective': objective}, 'governance': {**GOV, 'decision': decision}, 'available_realm_owners': []}
             with self.subTest(objective=objective, decision=decision), self.assertRaises(BoundaryError):
                 orchestrator_input(value)
+
+
+class RunnerUnicodeTests(unittest.TestCase):
+    def test_runner_rejects_config_with_escaped_surrogate(self):
+        from olympus.runner import run
+        # Use /tmp to ensure evidence is outside the repo
+        with tempfile.TemporaryDirectory() as tmpdir:
+            f_path = os.path.join(tmpdir, 'config.yaml')
+            with open(f_path, 'w') as f:
+                f.write('initiative:\n  objective: "\\uD800"\n')
+            
+            evidence_dir = os.path.join(tmpdir, 'evidence')
+            mock_provider = Mock()
+            mock_provider.evidence_kind = 'mock'
+            mock_provider.resolution = {}
+            
+            # Executar runner
+            run(open(f_path).read(), evidence_dir, mock_provider)
+            
+            # Conferir registro
+            with open(os.path.join(evidence_dir, 'record.json'), 'r') as f:
+                record = json.load(f)
+            
+            self.assertEqual(record['outcome'], 'technical_failure')
+            self.assertEqual(record['error']['code'], 'boundary_error')
+            self.assertTrue(record['storage_complete'])
+            self.assertEqual(len(record['calls']), 0)
