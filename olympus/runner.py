@@ -115,7 +115,7 @@ def run(input_raw, evidence_dir, provider, *, approval_authority=None, execution
         save(role + '.system.txt', prompts[role])
         save(role + '.input.yaml', input_text)
         snapshot(role + '.input.json', parsed_input)
-        request = {'role': role, 'system': prompts[role], 'input': input_text, 'isolation': dict(ISOLATION), 'provider': SETTINGS['provider'], 'model': SETTINGS['model']}
+        request = {'role': role, 'system': prompts[role], 'input': input_text, 'isolation': dict(ISOLATION), 'provider': record['configuration']['provider'], 'model': record['configuration']['model']}
         remaining = SETTINGS['total_seconds'] - (time.monotonic() - started)
         if remaining <= 0: raise TimeoutError()
         info = {'role': role, 'started_at': now(), 'timeout_seconds': min(SETTINGS['per_call_seconds'], remaining)}

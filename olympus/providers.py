@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 class ProviderError(RuntimeError):
     """Only a fixed safe code is exposed; transport exception text is never logged."""
     def __init__(self, code, *, wire=None, metadata=None):
-        self.code = code if code in ('http_429', 'http_error', 'model_unavailable', 'auth_unavailable', 'transport_error', 'invalid_response', 'response_limit', 'timeout', 'cancelled', 'credential_echo') else 'provider_error'
+        self.code = code if code in ('http_429', 'http_error', 'model_unavailable', 'auth_unavailable', 'unsupported_connection', 'insecure_remote_endpoint', 'transport_error', 'invalid_response', 'response_limit', 'timeout', 'cancelled', 'credential_echo') else 'provider_error'
         self.wire = wire
         self.metadata = metadata or {}
         super().__init__(self.code)
@@ -241,6 +241,120 @@ class NativeCodexProvider:
             raise failure('transport_error') from None
         except (ValueError, KeyError, TypeError, AttributeError):
             raise failure('invalid_response') from None
+
+
+def native_custom_connection(provider):
+    """Resolve the named Hermes connection; reject insecure remote transports."""
+    import ipaddress
+    from urllib.parse import urlsplit
+    try:
+        from hermes_cli.runtime_provider import resolve_runtime_provider
+        connection = resolve_runtime_provider(requested=provider)
+    except Exception:
+        raise ProviderError('auth_unavailable') from None
+    if not isinstance(connection, dict) or connection.get('requested_provider') != provider and connection.get('provider') != provider:
+        raise ProviderError('auth_unavailable')
+    if connection.get('api_mode') != 'chat_completions' or connection.get('extra_headers') or connection.get('extra_body'):
+        raise ProviderError('unsupported_connection')
+    endpoint, token = connection.get('base_url'), connection.get('api_key')
+    if not isinstance(endpoint, str) or not isinstance(token, str) or not token.strip():
+        raise ProviderError('auth_unavailable')
+    try:
+        url = urlsplit(endpoint)
+        host = url.hostname or ''
+    except ValueError:
+        raise ProviderError('unsupported_connection') from None
+    try:
+        local = host.lower() == 'localhost' or ipaddress.ip_address(host).is_loopback
+    except ValueError:
+        local = False
+    if url.scheme not in ('http', 'https') or not host or url.username or url.password or url.query or url.fragment:
+        raise ProviderError('unsupported_connection')
+    # User-authorized origin; API paths do not change its transport boundary.
+    authorized_router = (provider == 'custom:unified-routing'
+                         and url.scheme == 'http'
+                         and host == 'unified-router-v1'
+                         and url.port == 20139)
+    if url.scheme == 'http' and not local and not authorized_router:
+        raise ProviderError('insecure_remote_endpoint')
+    return endpoint.rstrip('/'), token
+
+
+class HermesCustomProvider:
+    """One stateless Chat Completions request per role; no agent, retry or fallback.
+
+    Explicit session provider/model are required: the global Hermes default may
+    differ from the active session. Reported downstream models are evidence, not
+    proof of physical execution, and need not equal a routing model identifier.
+    """
+    evidence_kind = 'model-backed-direct-request'
+
+    def __init__(self, provider, model, *, connection_reader=None, transport=None):
+        if not isinstance(provider, str) or not provider.startswith('custom:') or not isinstance(model, str) or not model.strip():
+            raise ValueError('Explicit named custom provider and model required')
+        self.resolution = dict(provider=provider, model=model, resolved_provider=provider,
+                               resolved_model=model, route='hermes-custom-chat-completions',
+                               reasoning_effort='provider-default (not sent)')
+        self.connection_reader = connection_reader or native_custom_connection
+        self.transport = transport
+
+    def call(self, request, timeout):
+        import json
+        import httpx
+        from .boundaries import LIMIT
+        if request['provider'] != self.resolution['provider'] or request['model'] != self.resolution['model'] or any(request['isolation'].values()):
+            raise ProviderError('invalid_response')
+        metadata = {}
+        token = None
+        def clean(value):
+            if isinstance(value, str): return value.replace(token, '[REDACTED]') if token else value
+            if isinstance(value, list): return [clean(item) for item in value]
+            if isinstance(value, dict): return {clean(key): clean(item) for key, item in value.items()}
+            return value
+        try:
+            endpoint, token = self.connection_reader(self.resolution['provider'])
+            if not isinstance(token, str) or not token: raise ProviderError('auth_unavailable')
+            payload = {'model': self.resolution['model'], 'messages': [
+                {'role': 'system', 'content': request['system']},
+                {'role': 'user', 'content': request['input']}], 'stream': False}
+            with httpx.Client(transport=self.transport, timeout=timeout, trust_env=False, follow_redirects=False) as client:
+                with client.stream('POST', endpoint + '/chat/completions', json=payload,
+                                   headers={'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'}) as response:
+                    metadata = clean({'http_status': response.status_code, 'request_id': response.headers.get('x-request-id')})
+                    if response.status_code != 200:
+                        raise ProviderError('http_429' if response.status_code == 429 else 'model_unavailable' if response.status_code == 404 else 'http_error')
+                    data = bytearray()
+                    for chunk in response.iter_bytes():
+                        if len(data) + len(chunk) > LIMIT: raise ProviderError('response_limit')
+                        data.extend(chunk)
+            obj = json.loads(bytes(data))
+            choices = obj['choices']
+            if not isinstance(choices, list) or len(choices) != 1 or choices[0]['finish_reason'] != 'stop':
+                raise ProviderError('invalid_response')
+            message = choices[0]['message']
+            if message.get('role') != 'assistant' or message.get('tool_calls') or message.get('function_call') or message.get('refusal'):
+                raise ProviderError('invalid_response')
+            text = message['content']
+            if not isinstance(text, str) or not text: raise ProviderError('invalid_response')
+            if token in text: raise ProviderError('credential_echo')
+            for key in ('id', 'model'):
+                if obj.get(key) is not None and not isinstance(obj[key], str): raise ProviderError('invalid_response')
+            metadata.update(clean({'reported_model': obj.get('model'), 'response_id': obj.get('id')}))
+            sanitized = clean(obj)
+            wire = json.dumps(sanitized, ensure_ascii=False).encode('utf-8')
+            metadata['wire_evidence'] = {'observed_bytes': len(data), 'truncated': len(wire) > LIMIT,
+                'redacted': sanitized != obj, 'sha256_basis': 'saved sanitized bounded JSON, not original wire'}
+            return Reply(text, metadata, wire[:LIMIT])
+        except ProviderError as exc:
+            raise ProviderError(exc.code, metadata=metadata) from None
+        except (httpx.TimeoutException, TimeoutError):
+            raise ProviderError('timeout', metadata=metadata) from None
+        except KeyboardInterrupt:
+            raise ProviderError('cancelled', metadata=metadata) from None
+        except httpx.HTTPError:
+            raise ProviderError('transport_error', metadata=metadata) from None
+        except (ValueError, KeyError, TypeError, AttributeError):
+            raise ProviderError('invalid_response', metadata=metadata) from None
 
 
 class RecordingProvider:

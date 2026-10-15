@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 
 from .boundaries import BoundaryError, LIMIT, parse, shape, text
-from .providers import NativeCodexProvider, RecordingProvider
+from .providers import HermesCustomProvider, NativeCodexProvider, RecordingProvider
 from .runner import EvidenceFinalizationError, run
 
 
@@ -18,13 +18,19 @@ def read_text(path):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description='Olympus Block 2.1 single-item local runner. Native direct openai-codex/gpt-6.1-sol; no retries.')
+    parser = argparse.ArgumentParser(description='Olympus Block 2.1 single-item local runner. Direct native Codex or explicit Hermes custom connection; no retries.')
+    parser.add_argument('--hermes-custom-provider', help='Existing named session connection, e.g. custom:unified-routing; native resolution')
+    parser.add_argument('--model', help='Explicit session model for --hermes-custom-provider; no global config changes')
     parser.add_argument('--input', required=True, help='UTF-8 YAML initiative mapping')
     parser.add_argument('--record-dir', required=True, help='Fresh directory outside repository; parent must exist')
     parser.add_argument('--approval-authority', help='Supplied label only, NOT authenticated approval (default: null)')
     parser.add_argument('--execution-context-update', help='UTF-8 YAML mapping with exactly context: string, appended only after ready admission')
     parser.add_argument('--recording-replies', help='Offline synthetic seam: JSON list of raw YAML reply strings; never model evidence')
     args = parser.parse_args(argv)
+    if bool(args.hermes_custom_provider) != bool(args.model):
+        parser.error('--hermes-custom-provider and --model must be supplied together')
+    if args.recording_replies and args.hermes_custom_provider:
+        parser.error('Recording replies and custom provider are mutually exclusive')
     try:
         input_raw = read_text(args.input)
         update = None
@@ -34,6 +40,8 @@ def main(argv=None):
             text(supplied['context'])
             update = supplied['context']
         provider = NativeCodexProvider()
+        if args.hermes_custom_provider:
+            provider = HermesCustomProvider(args.hermes_custom_provider, args.model)
         if args.recording_replies:
             replies = json.loads(read_text(args.recording_replies))
             if type(replies) is not list or not all(type(item) is str for item in replies):
