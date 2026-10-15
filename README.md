@@ -13,6 +13,8 @@ Foundation Contract v0.1 is the current architectural baseline. Canonical archit
 - [Specialist Domains](docs/domains.md): six promoted outcome contracts, theme mappings, artifact lifecycle, declarative Lab responsibilities and deferred workspace concepts.
 - [First Domain Owner](docs/domain-owner.md): historical Apollo bootstrap, shared ready-handoff and bounded result/lifecycle contracts.
 - [Sequential expansion](docs/realm-expansion.md): five additional Domain/Owner pairs, per-entry and integrated validation, corrections, self-reviews and limitations.
+- [Local Block 2.1 runner](docs/block-2.1-runner.md): bounded synchronous single-item dispatch, setup, evidence, offline checks and pending real F1–F4 validation; no persistent runtime or production guarantees.
+- [Proposed next construction block](docs/block-2.1-plan.md): proposed Session 2 / Block 2.1 local synchronous runner scope, conditional architecture exception, fresh fixtures and acceptance criteria. Historical planning document; not executed runtime evidence.
 - [Minimal Orchestrator](docs/orchestrator.md): specialist-first planning, logical Planning Room, initiative-state contract, conceptual handoff, and synthetic validation.
 
 Construction proceeds through approved blocks. By default, one approved implementation block maps to one atomic Git commit. GitHub serves as the canonical chronological construction history of Olympus, beginning with this foundation commit. Block 0.2 does not implement the first vertical slice.
