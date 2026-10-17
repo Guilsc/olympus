@@ -39,7 +39,7 @@ class PlanTests(unittest.TestCase):
                 s['work'].append({**s['work'][0], 'id': 'second', 'depends_on': [] if kind == 'two' else ['actual_returned_id']})
             elif kind == 'participant': s['team']['participating_owners'].append('research_learning_owner')
             else:
-                s['team'] = {'lead_owner': 'research_learning_owner', 'participating_owners': ['research_learning_owner']}
-                s['work'][0]['owner'] = 'research_learning_owner'
+                s['team'] = {'lead_owner': 'personal_life_owner', 'participating_owners': ['personal_life_owner']}
+                s['work'][0]['owner'] = 'personal_life_owner'
             self.validate(p)
             self.assertFalse(supported(p))

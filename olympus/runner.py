@@ -170,7 +170,9 @@ def run(input_raw, evidence_dir, provider, *, approval_authority=None, execution
                 name = str(path.relative_to(ROOT))
                 contracts[name] = data.decode('utf-8')
                 save('contract.' + name.replace('/', '.'), data)
-            prompts = {'governor': contracts['config/governor.md'], 'orchestrator': contracts['config/orchestrator.md'], b.OWNER: contracts['config/domains/professional_delivery.md'] + '\n\n' + contracts['config/domain_owners/professional_delivery.md']}
+            prompts = {'governor': contracts['config/governor.md'], 'orchestrator': contracts['config/orchestrator.md']}
+            for domain, owner in zip(b.DOMAINS, b.OWNERS):
+                prompts[owner] = contracts['config/domains/' + domain + '.md'] + '\n\n' + contracts['config/domain_owners/' + domain + '.md']
             candidates = []
             for domain, owner in zip(b.DOMAINS, b.OWNERS):
                 # Every complete declarative candidate contract is available, never hidden to force Apollo.
@@ -186,19 +188,22 @@ def run(input_raw, evidence_dir, provider, *, approval_authority=None, execution
                 plan_raw, plan = call('orchestrator', orch_input, b.orchestrator_input, lambda v: b.orchestrator(v, objective))
                 if plan['orchestration_status'] != 'ready':
                     record['outcome'] = plan['orchestration_status']
-                elif not b.supported(plan):
-                    record['outcome'] = 'unsupported_plan'
                 else:
-                    assignment = {'canonical_domain': b.DOMAINS[0], 'owner': b.OWNER, 'work_id': plan['initiative_state']['work'][0]['id']}
-                    context = initial['initiative'].get('context', '')
-                    if execution_context_update is not None:
-                        context += '\n\nExplicit host execution-context update (late supplied-data change; original handoff unchanged; conflicts must be surfaced, never invented away):\n' + execution_context_update
-                    owner_text = envelope('handoff', plan_raw) + dump({'assignment': assignment, 'dependencies': [], 'approval_authority': approval_authority, 'context': context})
-                    b.require(b.parse(owner_text)['handoff'] == plan, 'Handoff parsed transfer mismatch')
-                    record['assertions'].update(raw_transfer_text_equal=True, handoff_raw_text_equal=True, handoff_parsed_equal=True)
-                    _, result = call(b.OWNER, owner_text, lambda v: b.owner_input(v, objective), lambda v: b.owner_output(v, assignment))
-                    record['outcome'] = result['owner_status']
-                    record['result'] = result
+                    owner = b.supported_owner(plan)
+                    if owner is None:
+                        record['outcome'] = 'unsupported_plan'
+                    else:
+                        domain = b.DOMAINS[b.OWNERS.index(owner)]
+                        assignment = {'canonical_domain': domain, 'owner': owner, 'work_id': plan['initiative_state']['work'][0]['id']}
+                        context = initial['initiative'].get('context', '')
+                        if execution_context_update is not None:
+                            context += '\n\nExplicit host execution-context update (late supplied-data change; original handoff unchanged; conflicts must be surfaced, never invented away):\n' + execution_context_update
+                        owner_text = envelope('handoff', plan_raw) + dump({'assignment': assignment, 'dependencies': [], 'approval_authority': approval_authority, 'context': context})
+                        b.require(b.parse(owner_text)['handoff'] == plan, 'Handoff parsed transfer mismatch')
+                        record['assertions'].update(raw_transfer_text_equal=True, handoff_raw_text_equal=True, handoff_parsed_equal=True)
+                        _, result = call(owner, owner_text, lambda v: b.owner_input(v, objective, owner), lambda v: b.owner_output(v, assignment, owner))
+                        record['outcome'] = result['owner_status']
+                        record['result'] = result
     except (Exception, KeyboardInterrupt) as exc:
         record['outcome'] = 'technical_failure'
         code = exc.code if isinstance(exc, ProviderError) else 'cancelled' if isinstance(exc, KeyboardInterrupt) else 'timeout' if isinstance(exc, TimeoutError) else 'storage_error' if isinstance(exc, OSError) else 'boundary_error' if isinstance(exc, b.BoundaryError) else 'internal_error'
