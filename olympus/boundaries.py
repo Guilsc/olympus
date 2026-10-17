@@ -8,6 +8,7 @@ LIMIT = 1024 * 1024
 DOMAINS = ('professional_delivery', 'research_learning', 'personal_life', 'systems_automation', 'experimentation', 'creative_media')
 OWNERS = tuple(d + '_owner' for d in DOMAINS)
 OWNER = OWNERS[0]
+EXECUTABLE_OWNERS = OWNERS[:2]
 
 
 class BoundaryError(ValueError):
@@ -142,13 +143,15 @@ def orchestrator_input(value):
                 if field in c: strings(c[field])
 
 
-def owner_input(value, objective):
+def owner_input(value, objective, owner=OWNER):
     shape(value, ('handoff', 'assignment', 'dependencies', 'approval_authority'), ('context',))
     orchestrator(value['handoff'], objective)
     require(value['handoff']['orchestration_status'] == 'ready', 'Nonready handoff')
     a = value['assignment']
     shape(a, ('canonical_domain', 'owner', 'work_id'))
-    require(a['canonical_domain'] == DOMAINS[0] and a['owner'] == OWNER, 'Assignment owner/domain')
+    require(owner in EXECUTABLE_OWNERS, 'Unsupported executable owner')
+    domain = DOMAINS[OWNERS.index(owner)]
+    require(a['canonical_domain'] == domain and a['owner'] == owner, 'Assignment owner/domain')
     text(a['work_id'])
     work = [w for w in value['handoff']['initiative_state']['work'] if w['id'] == a['work_id'] and w['owner'] == a['owner']]
     require(len(work) == 1, 'Assignment work ID/owner')
@@ -165,12 +168,14 @@ def owner_input(value, objective):
     if 'context' in value: text(value['context'], empty=True)
 
 
-def owner_output(value, assignment):
+def owner_output(value, assignment, owner=OWNER):
     shape(value, ('owner_status', 'reason', 'canonical_domain', 'owner', 'work_id', 'result', 'assumptions', 'risks', 'blockers', 'routing_needs', 'next_owner'))
     status = value['owner_status']
     require(status in ('draft', 'review', 'blocked', 'clarify'), 'Owner status')
     text(value['reason'])
-    require(value['canonical_domain'] == DOMAINS[0] and value['owner'] == OWNER and value['next_owner'] == 'orchestrator', 'Owner canonical identity/route')
+    require(owner in EXECUTABLE_OWNERS, 'Unsupported executable owner')
+    domain = DOMAINS[OWNERS.index(owner)]
+    require(value['canonical_domain'] == domain and value['owner'] == owner and value['next_owner'] == 'orchestrator', 'Owner canonical identity/route')
     require(value['work_id'] == assignment['work_id'], 'Result assignment mismatch')
     r = value['result']
     shape(r, ('artifact_stage', 'content', 'checks'))
@@ -179,7 +184,7 @@ def owner_output(value, assignment):
     require(type(value['routing_needs']) is list, 'Routing list')
     for need in value['routing_needs']:
         shape(need, ('canonical_domain', 'relationship', 'need'))
-        require(need['canonical_domain'] in DOMAINS[1:] and need['relationship'] in ('primary', 'supporting'), 'Routing need identity')
+        require(need['canonical_domain'] in set(DOMAINS) - {domain} and need['relationship'] in ('primary', 'supporting'), 'Routing need identity')
         text(need['need'])
     if status in ('draft', 'review'):
         require(r['artifact_stage'] == status.upper() and not value['blockers'], 'Artifact lifecycle')
@@ -189,9 +194,21 @@ def owner_output(value, assignment):
         require(r['artifact_stage'] is None and r['content'] is None and r['checks'] == [] and bool(value['blockers']), 'Refusal lifecycle')
 
 
-def supported(value):
+def supported_owner(value):
     s = value['initiative_state']
-    return (value['orchestration_status'] == 'ready' and s['team'] == {'lead_owner': OWNER, 'participating_owners': [OWNER]} and len(s['work']) == 1 and s['work'][0]['owner'] == OWNER and s['work'][0]['depends_on'] == [])
+    if value['orchestration_status'] != 'ready' or len(s['work']) != 1:
+        return None
+    owner = s['work'][0]['owner']
+    if owner not in EXECUTABLE_OWNERS:
+        return None
+    if (s['team'] != {'lead_owner': owner, 'participating_owners': [owner]} or
+            s['work'][0]['depends_on'] != []):
+        return None
+    return owner
+
+
+def supported(value):
+    return supported_owner(value) is not None
 
 
 def check_unicode(value):
