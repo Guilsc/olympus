@@ -2,7 +2,7 @@
 
 ## Implemented scope and validation status
 
-The `olympus` Python entrypoint implements an ephemeral, synchronous, at-most-three-call chain: Governor → Orchestrator → one supported Domain Owner. All six declarative Owners are supplied to planning. One independent item with no dependencies can execute when Apollo (`professional_delivery_owner`) or Athena (`research_learning_owner`) is the sole participant and Lead Owner. A valid plan selecting another Owner, multiple items or participants, or dependencies terminates as `unsupported_plan`; it is never trimmed. Contracts under `config/` and historical validation remain unchanged. The [planning document](block-2.1-plan.md) is historical proposed scope, not execution evidence.
+The `olympus` Python entrypoint implements an ephemeral, synchronous, at-most-three-call chain: Governor → Orchestrator → one supported Domain Owner. All six declarative Owners are supplied to planning. One independent item with no dependencies can execute when Apollo (`professional_delivery_owner`), Athena (`research_learning_owner`) or Hestia (`personal_life_owner`) is the sole participant and Lead Owner. A valid plan selecting another Owner, multiple items or participants, or dependencies terminates as `unsupported_plan`; it is never trimmed. Contracts under `config/` and historical validation remain unchanged. The [planning document](block-2.1-plan.md) is historical proposed scope, not execution evidence.
 
 Offline unittest/recording-provider tests exercise structural gates, assignment, raw transfer, isolation, terminal outcomes and selected failure/resource boundaries. They do **not** prove model behavior, factual fidelity, authority, one-sentence semantics, availability or reliability. Fresh real F1–F4 trials and manual semantic inspection remain outstanding; this fix pass made no live calls. DRAFT/REVIEW is not approval, acceptance, delivery or release.
 
@@ -55,7 +55,7 @@ RECORDS=/absolute/outside-repo/existing-parent
 
 F4 appends the explicit context update only after ready admission, without rewriting governance, objective or handoff. A real blocked Apollo output must have null content/stage and empty checks. If F3 ends at Governor clarification, do not claim the Orchestrator missing-fact boundary was exercised. Inspect F1's actual sentence for version 2/search typo fix and absence of invented facts, tests or approval/release claims. Never substitute synthetic results for unsuccessful real attempts.
 
-Athena dispatch was added as a bounded incremental extension. Its focused offline check verifies the selected Owner identity and exact `research_learning` assignment; the existing Apollo happy-path check covers the same identity and assignment boundary. No live-provider result is claimed for Athena.
+Athena and Hestia dispatch were added as bounded incremental extensions. Their focused offline checks verify the selected Owner identity and exact `research_learning` or `personal_life` assignment; the existing Apollo happy-path check covers the same identity and assignment boundary. No live-provider result is claimed for Athena or Hestia.
 
 Offline checks (no credentials/network calls):
 

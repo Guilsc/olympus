@@ -8,7 +8,7 @@ LIMIT = 1024 * 1024
 DOMAINS = ('professional_delivery', 'research_learning', 'personal_life', 'systems_automation', 'experimentation', 'creative_media')
 OWNERS = tuple(d + '_owner' for d in DOMAINS)
 OWNER = OWNERS[0]
-EXECUTABLE_OWNERS = OWNERS[:2]
+EXECUTABLE_OWNERS = OWNERS[:3]
 
 
 class BoundaryError(ValueError):

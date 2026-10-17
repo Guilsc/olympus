@@ -100,6 +100,53 @@ class RunnerTests(unittest.TestCase):
         self.assertEqual(record['result']['owner'], owner)
         self.assertEqual(record['result']['canonical_domain'], 'research_learning')
 
+    def test_hestia_single_item_dispatch(self):
+        from olympus.boundaries import parse
+
+        owner = 'personal_life_owner'
+        domain = 'personal_life'
+        objective = 'Draft a checklist from the supplied fictional household note.'
+        initiative = {
+            'objective': objective,
+            'context': 'Supplied note: pack keys and an umbrella. Use only this note.',
+        }
+        plan_value = deepcopy(PLAN)
+        plan_value['initiative_state']['objective'] = objective
+        plan_value['initiative_state']['team'] = {
+            'lead_owner': owner,
+            'participating_owners': [owner],
+        }
+        plan_value['initiative_state']['work'][0].update(
+            objective='Draft the supplied-note checklist',
+            owner=owner,
+        )
+        result_value = deepcopy(RESULT)
+        result_value.update(canonical_domain=domain, owner=owner)
+        result_value['result']['content'] = 'Checklist: keys; umbrella.'
+
+        from olympus.runner import run
+        from olympus.providers import RecordingProvider
+        provider = RecordingProvider([raw(GOV), raw(plan_value), raw(result_value)])
+        record = run(
+            raw({'initiative': initiative}),
+            self.path,
+            provider,
+            approval_authority='Household planner',
+        )
+
+        self.assertEqual(record['outcome'], 'review')
+        self.assertEqual([call['role'] for call in provider.calls], [
+            'governor', 'orchestrator', owner,
+        ])
+        assignment = parse(provider.calls[2]['input'])['assignment']
+        self.assertEqual(assignment, {
+            'canonical_domain': domain,
+            'owner': owner,
+            'work_id': 'actual_returned_id',
+        })
+        self.assertEqual(record['result']['owner'], owner)
+        self.assertEqual(record['result']['canonical_domain'], domain)
+
     def test_ac2_ac3_ac4_and_other_terminal_states(self):
         for role, status, replies, count in [('governor', 'clarify', [{'decision': 'clarify', 'reason': 'Which objective?', 'next_owner': None}], 1), ('governor', 'stop', [{'decision': 'stop', 'reason': 'Explicit restriction', 'next_owner': None}], 1), ('orchestrator', 'planning', [GOV, plan('planning')], 2), ('orchestrator', 'clarify', [GOV, plan('clarify')], 2), (OWNER, 'clarify', [GOV, PLAN, result('clarify')], 3), (OWNER, 'blocked', [GOV, PLAN, result('blocked')], 3), (OWNER, 'draft', [GOV, PLAN, result('draft')], 3)]:
             self.path = self.path.parent / (role + status)
