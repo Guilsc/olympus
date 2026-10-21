@@ -1,25 +1,84 @@
 # Olympus
 
-Olympus is a system intended to be modular, extensible, governable, and theme-independent. This repository is a clean rebuild; the previous `Olympus_OS` repository is historical reference only, not an implementation or history source for this bootstrap.
+Olympus is an evolving operating model for coordinated AI teams. It explores
+how persistent agents can work together without concentrating ownership,
+memory, governance, and execution in one oversized assistant.
 
-Foundation Contract v0.1 is the current architectural baseline. Canonical architecture is separate from the narrative/theme layer and from runtime instances. Block 0.2 established the clean foundation. Block 1.1 implements and validates the declarative `governor`; Block 1.2 implements and validates the declarative `orchestrator`. Both use fresh no-tools evaluations in the external Hermes-Main environment. Block 1.3 promotes and validates the `professional_delivery` Domain (Work); Block 1.4 implements and validates its first declarative `domain_owner`, functional identifier `professional_delivery_owner`, current theme alias Apollo. Domain and Owner contracts remain separate. Block 1.5 executes and records real host-side Governor → Orchestrator → professional_delivery_owner → result chains, with unchanged raw transfers and fresh native no-tools conversations. No persistent Olympus runtime or production dispatch/persistence system exists. Worker remains **REFERENCE ONLY**.
+> **Project status:** active development. The repository is public for
+> visibility, cloning, and experimentation, but external contributions are
+> temporarily paused while the architecture and runtime boundaries are still
+> changing. Contributions will open in a later phase.
 
-- [Foundation overview](docs/foundation.md): architecture, canonical roles, scope gate, and current technical baseline.
-- [Constitution](docs/CONSTITUTION.md): the eight approved stable architectural principles.
-- [Architecture](docs/architecture.md): Foundation v0.1 concepts and scope boundaries.
-- [Theme](config/theme.yaml): the approved Olympus narrative aliases.
-- [End-to-end validation](docs/block-1.5.md): executed host-side chains, exact scenario results, raw evidence, limitations, and the pre-merge gate.
-- [Minimal Governor](docs/governor.md): role prompt, native invocation, decision contract, and validation.
-- [Specialist Domains](docs/domains.md): six promoted outcome contracts, theme mappings, artifact lifecycle, declarative Lab responsibilities and deferred workspace concepts.
-- [First Domain Owner](docs/domain-owner.md): historical Apollo bootstrap, shared ready-handoff and bounded result/lifecycle contracts.
-- [Sequential expansion](docs/realm-expansion.md): five additional Domain/Owner pairs, per-entry and integrated validation, corrections, self-reviews and limitations.
-- [Proposed next construction block](docs/block-2.1-plan.md): proposed Session 2 / Block 2.1 local synchronous runner scope, conditional architecture exception, fresh fixtures and acceptance criteria. Planning only; implementation requires explicit approval.
-- [Minimal Orchestrator](docs/orchestrator.md): specialist-first planning, logical Planning Room, initiative-state contract, conceptual handoff, and synthetic validation.
+## What Olympus is designed to provide
 
-Construction proceeds through approved blocks. By default, one approved implementation block maps to one atomic Git commit. GitHub serves as the canonical chronological construction history of Olympus, beginning with this foundation commit. Block 0.2 does not implement the first vertical slice.
+- Explicit responsibility and authority boundaries for every role and domain.
+- A Governor for scope and governance decisions.
+- An Orchestrator for planning, ownership, dependencies, and handoffs.
+- Accountable Domain Owners for specialist outcomes.
+- Separation between temporary working context, agent memory, and curated
+  shared knowledge.
+- Reusable skills, lifecycle policies, escalation paths, and human approval
+  boundaries.
+- Traceability from a request through decisions, reviews, artifacts, and the
+  final result.
 
-## Current sequential expansion availability
+The current conceptual flow is:
 
-Declarative Domain/Owner contracts currently available: `professional_delivery` / `professional_delivery_owner`, `research_learning` / `research_learning_owner`, `personal_life` / `personal_life_owner`, `systems_automation` / `systems_automation_owner`, `experimentation` / `experimentation_owner`, `creative_media` / `creative_media_owner`. Availability means a definition, not a persistent agent instance, invoked consultation, retrieval, execution or dispatch. Other outcome responsibilities may be named as conceptual routing references.
+```text
+User -> Governor -> Orchestrator -> Domain Owner -> Result
+```
 
-Expansion validation and reviews are recorded in [the expansion evidence](docs/realm-expansion.md). Earlier Block observations and immutable Block 1.5 evidence remain historical records, not statements that the new Owners were available then. Worker, persistent runtime, memory, capabilities and release automation remain deferred.
+The names from Greek mythology are replaceable presentation aliases. The
+canonical responsibilities remain theme-independent.
+
+## Current state
+
+Foundation Contract v0.1 is the architectural baseline. The repository
+currently defines and documents:
+
+- the canonical Governor and Orchestrator roles;
+- six declarative Domain/Owner contracts;
+- bounded handoff, readiness, result, and artifact-lifecycle contracts;
+- host-side validation of the professional-delivery chain;
+- sequential expansion evidence and known limitations.
+
+Available declarative pairs are:
+
+| Domain | Owner |
+| --- | --- |
+| `professional_delivery` | `professional_delivery_owner` |
+| `research_learning` | `research_learning_owner` |
+| `personal_life` | `personal_life_owner` |
+| `systems_automation` | `systems_automation_owner` |
+| `experimentation` | `experimentation_owner` |
+| `creative_media` | `creative_media_owner` |
+
+Availability means a reviewed definition, not a continuously running agent.
+Persistent runtime, Workers, durable memory, production dispatch, capability
+execution, and release automation remain in development or deferred.
+
+## Documentation
+
+- [Foundation overview](docs/foundation.md)
+- [Constitution](docs/CONSTITUTION.md)
+- [Architecture](docs/architecture.md)
+- [Governor](docs/governor.md)
+- [Orchestrator](docs/orchestrator.md)
+- [Domains](docs/domains.md)
+- [Domain Owner](docs/domain-owner.md)
+- [End-to-end validation](docs/block-1.5.md)
+- [Sequential expansion](docs/realm-expansion.md)
+- [Proposed Block 2.1](docs/block-2.1-plan.md)
+
+The public project page provides a visual overview and additional context:
+[guilhermecosta.tech/projects/olympus](https://guilhermecosta.tech/projects/olympus).
+
+## Repository policy
+
+The project is being expanded in small, reviewed blocks. The default branch is
+protected, direct history rewrites are blocked, and changes are expected to
+arrive through pull requests created by the maintainer or authorized agents.
+
+External pull requests, issues, and review requests are not being accepted yet.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the current contribution status and
+[SECURITY.md](SECURITY.md) for private security reporting.
