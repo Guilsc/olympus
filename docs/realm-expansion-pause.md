@@ -4,7 +4,7 @@
 
 ## Repository and existing work
 
-- Repository: `C:\hermes\workspace\olympus`.
+- Repository: `C:\AI_Workspace\HermesDesktop\workspace\olympus`.
 - Branch: `feat/realm-expansion`; reuse it, do not create another expansion branch or duplicate the work.
 - Exact starting/main commit: `cfdf28f8289f7d9c705483c81daaa7f7d5d6e59b`.
 - Implementation HEAD before this checkpoint: `0a1b396f68c257be12e36a7fd4547a0198610425`.
@@ -40,9 +40,9 @@ Failed/superseded attempts and fixture corrections are preserved. Research YAML-
 
 ## How to resume safely
 
-Read this checkpoint, `docs/realm-expansion.md`, the external `execute.md` and `queue.yaml` in `C:\hermes\shared-from-other-ai-models\olympus-realm-expansion`, repository instructions and development-delivery-policy. Inspect current branch, commits, working tree and remote PRs before writing; preserve unexpected/unrelated work.
+Read this checkpoint, `docs/realm-expansion.md`, the external `execute.md` and `queue.yaml` in `C:\AI_Workspace\HermesDesktop\shared-from-other-ai-models\olympus-realm-expansion`, repository instructions and development-delivery-policy. Inspect current branch, commits, working tree and remote PRs before writing; preserve unexpected/unrelated work.
 
-The host scratch directory is `C:\hermes\cache\scratch\olympus-realm-expansion`. Scratch is disposable and can be pruned; do not rely on it as the sole source. The [durable checkpoint JSON](validation/realm-expansion-checkpoint.json) retains exact inputs/raw outputs for all five completed integrated cases and source snapshots/hashes for `expansion.py`, `integration.py`, `apollo_baseline.py`, profiles, starting hashes, admission and corrections. These are quoted external experiment source/evidence, **not installed Olympus executable infrastructure**.
+The host scratch directory is `C:\AI_Workspace\HermesDesktop\cache\scratch\olympus-realm-expansion`. Scratch is disposable and can be pruned; do not rely on it as the sole source. The [durable checkpoint JSON](validation/realm-expansion-checkpoint.json) retains exact inputs/raw outputs for all five completed integrated cases and source snapshots/hashes for `expansion.py`, `integration.py`, `apollo_baseline.py`, profiles, starting hashes, admission and corrections. These are quoted external experiment source/evidence, **not installed Olympus executable infrastructure**.
 
 If scratch is absent, restore each `source_snapshots[name].content` only to the external scratch directory, verify its recorded normalized-text SHA-256, and reconstruct completed `all_six-integration-<name>.json` records from `integration_scenarios`. Per-entry current/superseded cases and raw conversations are retained in the five `docs/validation/realm-expansion-<domain>.json` files. Do not overwrite historical evidence or rerun already completed work needlessly.
 
