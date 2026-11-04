@@ -1,6 +1,6 @@
 # Foundation overview
 
-Foundation Contract v0.1 establishes Olympus's architectural vocabulary, stable principles, and scope boundaries. Olympus is intended to be modular, extensible, governable, and theme-independent. This clean rebuild does not import implementation or history from `Olympus_OS`.
+Foundation Contract v0.1 establishes Olympus's architectural vocabulary, stable principles, and scope boundaries. Olympus is intended to be modular, extensible, governable, and theme-independent. This foundation defines its own implementation boundaries.
 
 The [Constitution](CONSTITUTION.md) contains the eight approved principles; [architecture.md](architecture.md) records the Foundation contract. This overview distinguishes approved concepts from implemented behavior.
 

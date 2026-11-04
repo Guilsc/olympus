@@ -1,50 +1,32 @@
 # Olympus
 
-Olympus is an evolving operating model for coordinated AI teams. It explores
-how persistent agents can work together without concentrating ownership,
-memory, governance, and execution in one oversized assistant.
+**Explicit ownership for governed AI teams.**
 
-> **Project status:** active development. The repository is public for
-> visibility, cloning, and experimentation, but external contributions are
-> temporarily paused while the architecture and runtime boundaries are still
-> changing. Contributions will open in a later phase.
+Olympus defines a theme-independent operating model for AI collaboration: governance admits work, orchestration coordinates it, and accountable Domain Owners produce bounded results.
 
-## What Olympus is designed to provide
+> **Status: architectural foundation, not a production agent runtime.** This repository contains declarative role contracts, documented boundaries, and historical host-side validation evidence. Cloning it does not start agents or provision services. External contributions are currently paused.
 
-- Explicit responsibility and authority boundaries for every role and domain.
-- A Governor for scope and governance decisions.
-- An Orchestrator for planning, ownership, dependencies, and handoffs.
-- Accountable Domain Owners for specialist outcomes.
-- Separation between temporary working context, agent memory, and curated
-  shared knowledge.
-- Reusable skills, lifecycle policies, escalation paths, and human approval
-  boundaries.
-- Traceability from a request through decisions, reviews, artifacts, and the
-  final result.
+## Why it exists
 
-The current conceptual flow is:
+An assistant should not silently become the owner, reviewer, memory store, and approval authority for every task. Olympus makes those responsibilities explicit:
 
-```text
-User -> Governor -> Orchestrator -> Domain Owner -> Result
-```
+- **Governor:** decides whether an initiative can proceed, must stop, or needs clarification.
+- **Orchestrator:** establishes ownership, dependencies, readiness, and the bounded handoff.
+- **Domain Owner:** remains accountable for one outcome domain and returns evidence-backed work.
+- **Human approval:** remains separate from producing, reviewing, and releasing an artifact.
 
-The names from Greek mythology are replaceable presentation aliases. The
-canonical responsibilities remain theme-independent.
+## Architecture
 
-## Current state
+![Repository architecture](docs/assets/architecture.svg)
 
-Foundation Contract v0.1 is the architectural baseline. The repository
-currently defines and documents:
+[Editable HTML/SVG source](docs/architecture.html) · [Diagram style](docs/assets/architecture.style.json)
 
-- the canonical Governor and Orchestrator roles;
-- six declarative Domain/Owner contracts;
-- bounded handoff, readiness, result, and artifact-lifecycle contracts;
-- host-side validation of the professional-delivery chain;
-- sequential expansion evidence and known limitations.
 
-Available declarative pairs are:
+This is a responsibility model, not proof of runtime dispatch. Greek names are replaceable aliases; canonical roles and Domain identifiers define authority.
 
-| Domain | Owner |
+## Available contracts
+
+| Domain | Canonical Owner |
 | --- | --- |
 | `professional_delivery` | `professional_delivery_owner` |
 | `research_learning` | `research_learning_owner` |
@@ -53,32 +35,44 @@ Available declarative pairs are:
 | `experimentation` | `experimentation_owner` |
 | `creative_media` | `creative_media_owner` |
 
-Availability means a reviewed definition, not a continuously running agent.
-Persistent runtime, Workers, durable memory, production dispatch, capability
-execution, and release automation remain in development or deferred.
+Availability means a declarative definition, not a persistent instance. Foundation Contract v0.1 is the architectural baseline. Durable memory, capability execution, production dispatch, persistent agents, and release automation are not implemented by this repository.
 
-## Documentation
+## Explore locally
 
-- [Foundation overview](docs/foundation.md)
-- [Constitution](docs/CONSTITUTION.md)
-- [Architecture](docs/architecture.md)
-- [Governor](docs/governor.md)
-- [Orchestrator](docs/orchestrator.md)
-- [Domains](docs/domains.md)
-- [Domain Owner](docs/domain-owner.md)
-- [End-to-end validation](docs/block-1.5.md)
-- [Sequential expansion](docs/realm-expansion.md)
-- [Proposed Block 2.1](docs/block-2.1-plan.md)
+```bash
+git clone https://github.com/Guilsc/olympus.git
+cd olympus
+python3 -m unittest discover -s tests -v
+```
 
-The public project page provides a visual overview and additional context:
-[guilhermecosta.tech/projects/olympus](https://guilhermecosta.tech/projects/olympus).
+Python 3.10+ is sufficient for the dependency-free repository checks. They check contract identities, Domain/Owner/theme alignment, local documentation links, and JSON syntax. They do **not** call a provider, rerun historical model evaluations, verify external permissions, or establish runtime readiness.
 
-## Repository policy
+Start with the [foundation overview](docs/foundation.md), [Constitution](docs/CONSTITUTION.md), and [architecture](docs/architecture.md). Review the [Governor](docs/governor.md), [Orchestrator](docs/orchestrator.md), [Domains](docs/domains.md), and [Domain Owner](docs/domain-owner.md) before adapting any prompt.
 
-The project is being expanded in small, reviewed blocks. The default branch is
-protected, direct history rewrites are blocked, and changes are expected to
-arrive through pull requests created by the maintainer or authorized agents.
+## Project structure
 
-External pull requests, issues, and review requests are not being accepted yet.
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the current contribution status and
-[SECURITY.md](SECURITY.md) for private security reporting.
+| Path | Purpose |
+| --- | --- |
+| `config/governor.md`, `config/orchestrator.md` | Canonical role contracts |
+| `config/domains/`, `config/domain_owners/` | Outcome ownership and bound role contracts |
+| `config/theme.yaml` | Replaceable presentation aliases |
+| `docs/validation/`, `docs/fixtures/` | Historical evidence and bounded scenarios |
+| `.agents/skills/` | Explicit host-side validation procedure |
+| `tests/` | Offline repository integrity checks |
+| `.github/` | Review ownership and validation workflow |
+
+Historical evidence is not canonical live state. Keep retained failure records and prompt hashes intact; a later documentation edit does not retroactively validate a changed prompt. Native model-backed validation requires its own explicit authorization and configured host.
+
+## Roadmap and boundaries
+
+The [proposed next block](docs/block-2.1-plan.md) describes a possible bounded dispatcher. It is a proposal, not implementation authorization. Review [end-to-end validation](docs/block-1.5.md) and [sequential expansion](docs/realm-expansion.md) before extending the architecture.
+
+No package installation, container deployment, credential synchronization, or production activation is part of the quick start.
+
+## Contributing, security, and releases
+
+External issues, pull requests, and review requests remain paused; see [CONTRIBUTING.md](CONTRIBUTING.md). Report security concerns privately following [SECURITY.md](SECURITY.md).
+
+There is no published application package or supported runtime release to install. The source is licensed under the [MIT License](LICENSE); public visibility is not a license grant. GitHub computes its Languages panel from tracked files, not documentation claims.
+
+[Public project overview](https://guilhermecosta.tech/projects/olympus)
