@@ -17,9 +17,9 @@ An assistant should not silently become the owner, reviewer, memory store, and a
 
 ## Architecture
 
-![Repository architecture](docs/assets/architecture.svg)
+![Conceptual governor, orchestrator, and six domain-owner contracts](docs/assets/architecture.svg)
 
-[Editable HTML/SVG source](docs/architecture.html) · [Diagram style](docs/assets/architecture.style.json)
+This is a role-contract tree, not a claim that this repository runs six autonomous services. The SVG is the editable source.
 
 
 This is a responsibility model, not proof of runtime dispatch. Greek names are replaceable aliases; canonical roles and Domain identifiers define authority.
