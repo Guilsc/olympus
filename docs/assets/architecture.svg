@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="730" viewBox="0 0 1200 730" role="img" aria-labelledby="olympus-title olympus-desc" id="architecture-root"><title id="olympus-title">Olympus | Governed ownership</title><desc id="olympus-desc">DECLARATIVE RESPONSIBILITY MODEL. OFFLINE REPOSITORY INTEGRITY. Governor: Admits, clarifies, or stops scope. Orchestrator: Ownership, readiness, and handoffs. Domain Owner: Accountable bounded outcome. Role and Domain contracts: Canonical identifiers and aliases. Integrity checks: Identity, links, theme, and JSON. Reviewable check results: Not proof of live model execution. Architectural foundation, not a deployed agent runtime. Human approval remains a separate boundary.</desc>
+<rect width="1200" height="730" fill="#101b2a"/>
+<defs>
+      <style>#architecture-root { color: #eef2f7; font-family: system-ui,sans-serif; }</style><marker id="architecture-olympus-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#becbdc"/></marker></defs>
+<text x="60" y="66" fill="#c9aa72" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2">ARCHITECTURE / MAINTAINABLE SOURCE</text>
+<text x="60" y="110" fill="#eef2f7" font-family="system-ui,sans-serif" font-size="27" font-weight="600">Olympus | Governed ownership</text>
+<text x="60" y="177" fill="#becbdc" font-family="ui-monospace,monospace" font-size="13" letter-spacing="1.5">DECLARATIVE RESPONSIBILITY MODEL</text>
+<path d="M 360 264 H 450" fill="none" stroke="#becbdc" stroke-width="1.5" marker-end="url(#architecture-olympus-arrow)"/>
+<path d="M 750 264 H 840" fill="none" stroke="#becbdc" stroke-width="1.5" marker-end="url(#architecture-olympus-arrow)"/>
+<rect x="60" y="210" width="300" height="112" rx="8" fill="#192b40" stroke="#becbdc" stroke-width="1.2"/>
+<text x="80" y="243" fill="#eef2f7" font-family="system-ui,sans-serif" font-size="17" font-weight="600">Governor</text>
+<text x="80" y="270" fill="#becbdc" font-family="system-ui,sans-serif" font-size="13.5">Admits, clarifies, or stops scope</text>
+<rect x="450" y="210" width="300" height="112" rx="8" fill="#c9aa72" stroke="#c9aa72" stroke-width="1.2"/>
+<text x="470" y="243" fill="#101b2a" font-family="system-ui,sans-serif" font-size="17" font-weight="600">Orchestrator</text>
+<text x="470" y="270" fill="#101b2a" font-family="system-ui,sans-serif" font-size="13.5">Ownership, readiness, and handoffs</text>
+<rect x="840" y="210" width="300" height="112" rx="8" fill="#192b40" stroke="#becbdc" stroke-width="1.2"/>
+<text x="860" y="243" fill="#eef2f7" font-family="system-ui,sans-serif" font-size="17" font-weight="600">Domain Owner</text>
+<text x="860" y="270" fill="#becbdc" font-family="system-ui,sans-serif" font-size="13.5">Accountable bounded outcome</text>
+<text x="60" y="407" fill="#becbdc" font-family="ui-monospace,monospace" font-size="13" letter-spacing="1.5">OFFLINE REPOSITORY INTEGRITY</text>
+<path d="M 360 494 H 450" fill="none" stroke="#becbdc" stroke-width="1.5" marker-end="url(#architecture-olympus-arrow)"/>
+<path d="M 750 494 H 840" fill="none" stroke="#becbdc" stroke-width="1.5" marker-end="url(#architecture-olympus-arrow)"/>
+<rect x="60" y="440" width="300" height="112" rx="8" fill="#192b40" stroke="#becbdc" stroke-width="1.2"/>
+<text x="80" y="473" fill="#eef2f7" font-family="system-ui,sans-serif" font-size="17" font-weight="600">Role and Domain contracts</text>
+<text x="80" y="500" fill="#becbdc" font-family="system-ui,sans-serif" font-size="13.5">Canonical identifiers and aliases</text>
+<rect x="450" y="440" width="300" height="112" rx="8" fill="#c9aa72" stroke="#c9aa72" stroke-width="1.2"/>
+<text x="470" y="473" fill="#101b2a" font-family="system-ui,sans-serif" font-size="17" font-weight="600">Integrity checks</text>
+<text x="470" y="500" fill="#101b2a" font-family="system-ui,sans-serif" font-size="13.5">Identity, links, theme, and JSON</text>
+<rect x="840" y="440" width="300" height="112" rx="8" fill="#192b40" stroke="#becbdc" stroke-width="1.2"/>
+<text x="860" y="473" fill="#eef2f7" font-family="system-ui,sans-serif" font-size="17" font-weight="600">Reviewable check results</text>
+<text x="860" y="500" fill="#becbdc" font-family="system-ui,sans-serif" font-size="13.5">Not proof of live model execution</text>
+<path d="M 60 609 H 1140" stroke="#becbdc" stroke-width="1" opacity="0.4"/>
+<text x="60" y="643" fill="#becbdc" font-family="system-ui,sans-serif" font-size="14">Architectural foundation, not a deployed agent runtime. Human approval remains a separate boundary.</text>
+<text x="60" y="705" fill="#becbdc" font-family="ui-monospace,monospace" font-size="11">olympus / source-aware view / no runtime certification</text></svg>
