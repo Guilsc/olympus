@@ -72,3 +72,8 @@ Never claim the prompt playbook ran remotely or the UI specification was install
 ## Source-verified API admission
 
 [Hermes upstream API admission runbook](hermes-upstream-api-admission-runbook.md) cites the current official NousResearch API Server and Programmatic Integration manuals, documents verified upstream REST/WS methods, durable idempotency boundaries, private session/credential proof requirements and Telegram bot-to-bot rules. **The installed VPS version and API enablement are still unverified; this is NOT a live connection.**
+
+
+## Existing Hermes default Kanban board staging
+
+[Hermes Core default orchestration workpack](hermes-default-kanban-orchestration-workpack.md) breaks BOOT-00/U0/01/02 into fourteen independently reviewable proposed tasks, specialist lanes, dependencies, and the actual board reconciliation prompt. It targets the user-provided existing HTTPS Kanban URL. **The board was not accessible through this chat; no native card or agent was created, delegated or moved.**
