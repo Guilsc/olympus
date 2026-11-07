@@ -64,3 +64,7 @@ Never claim the prompt playbook ran remotely or the UI specification was install
 ## Static visual prototype
 
 [Mission Control — three selectable layout concepts](mission-control-three-concepts.html) is a **standalone HTML/CSS prototype** with concept tabs (A Command Bridge, B Galaxy Atlas, C Mission Studio), synthetic status data and a vertical initiative picker. It is not connected to the VPS and has no operational backend, model calls, auth or real approvals. The file can be inspected as source on GitHub or rendered safely as a local static HTML artifact; no ChatGPT Project has been created.
+
+## Additional source-derived role packets
+
+[Eight Olympus profile activation packets](eight-profile-activation-packets.md) documents source-aligned Governor, Orchestrator and six Domain Owner behavior capsules, visual themes and negative tests. It references existing canonical role contracts and specifically **does not change** SOUL, memory, grants, agent runtime or profiles. Validate every actual native profile on the VPS before applying the supplemental guidance.
