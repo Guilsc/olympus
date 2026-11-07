@@ -1,0 +1,75 @@
+# Olympus profile, themes and skills scope: configuration draft
+
+> Draft inventory as of 2026-11-07. **No SOUL, USER, MEMORY, plugin, Telegram or runtime profile has been modified.** The GitHub default branch's `config/theme.yaml` was read directly and is the source of the aliases below. Historical VPS reports of native profiles are not proof of current runtime instantiation.
+
+## Do not conflate identity and theme
+
+Canonical roles are `governor`, `orchestrator`, `domain_owner`. Theme is a replaceable display layer; a narrative name or image does not grant authority or alter routing. Runtime profiles must separately bind their canonical role/domain/side-effect grants, effective memory root and allowed model/provider.
+
+| Intended native profile | Canonical role / domain | Existing Greek alias | Suggested visual theme direction | Capability responsibility |
+| --- | --- | --- | --- | --- |
+| `default` | External engineering **Hermes Core**, outside Olympus roles | Hermes Core | Minimal neutral operator | VPS maintenance, independent of Olympus initiative workflow |
+| `olympus-zeus` | `governor` | Zeus | Marble/blue, understated lightning, gold accent | Governance only; no specialist side effects |
+| `olympus-hermes` | `orchestrator` | Hermes | Wing motif, slate/teal, lightweight navigation | Planning, delegation and mission handoff, never direct owner work |
+| `olympus-apollo` | `domain_owner:professional_delivery` | Apollo | Warm solar, amber, editorial focus | Professional delivery results |
+| `olympus-athena` | `domain_owner:research_learning` | Athena | Sapphire, clean geometry and knowledge motif | Research and learning results |
+| `olympus-hestia` | `domain_owner:personal_life` | Hestia | Muted terracotta, welcoming hearth | Personal-life outcomes |
+| `olympus-hephaestus` | `domain_owner:systems_automation` | Hephaestus | Steel/copper, craft and systems | Automation and infrastructure results, **only when Olympus ownership grants permit** |
+| `olympus-prometheus` | `domain_owner:experimentation` | Prometheus | Cobalt/orange spark, laboratories | Bounded experiments and prototypes |
+| `olympus-aphrodite` | `domain_owner:creative_media` | Aphrodite | Rose/mauve, restrained creative texture | Creative and media results |
+
+The eight Olympus profile names above are target IDs from previous approved decisions; verify actual names and profile state roots on VPS before applying. The external Core is a ninth, separate profile (`default`).
+
+## Skills and plugins: placement rules
+
+1. **Global/shared discovery** can enumerate vetted resources, docs, Skill Registry and catalog. Discovery is read-only and grants no use by itself.
+2. **Project scoped** guidance governs Olympus implementation conventions; the existing repository instructions and shared development-delivery skill remain upstream sources. Projects do not inherit all host privileges.
+3. **Profile/Realm scoped** skills and tools enforce exclusive side-effect ownership. A non-owner asks Olympus Hermes to delegate to the proper Domain Owner, even for a small task.
+4. **Task scoped** worker tools may be granted for the life of a specific approved mission, with expiry, logging and cancellation; never promoted to a permanent domain owner by the worker.
+5. **External Core** can perform its separate authorized platform-admin workflow. That does not mean Zeus, Hermes or individual Domain Owners inherit Core's keys or administrative tools.
+
+No new canonical capability registry, Knowledge Registry, Resource Registry or Mission Ledger should be created to solve visibility. Reuse the already approved, separately owned existing resources and adapters. Only change authority with an explicit reviewed contract change.
+
+## Example declarative binding proposal (not the effective runtime schema)
+
+```yaml
+profile_id: olympus-athena
+role: domain_owner
+canonical_domain: research_learning
+theme:
+  display_alias: Athena
+  palette_hint: sapphire
+  grants_authority: false
+memory:
+  dedicated_namespace: REQUIRED
+skills:
+  discovery: shared_read_only
+  execution: domain_owner_approved_only
+tool_access:
+  execution_grants: EXPLICIT_ALLOWLIST_ONLY
+  cross_realm_requests: delegate_via_olympus_hermes
+model:
+  preferred: APPROVED_PROVIDER_MODEL
+  fallback: NONE_UNLESS_APPROVED
+```
+
+The actual Hermes Agent profile schema may differ. Do not write this into live profile configuration without checking v0.23 installed schema and the reviewed owner mapping.
+
+## Theme asset work
+
+- Prepare one 1:1 square avatar concept per god, consistent grid and recognition at Telegram thumbnail size, plus a neutral Core icon.
+- Theme elements may vary colors, symbolism, visible names and avatars. Never use avatar/god alias to infer who may execute a capability.
+- Avoid embedding secret prompts, memory content or personal identifying information in generated assets.
+- Package licensing and provenance before uploading to Telegram or WebApp. No binary assets generated by this draft.
+
+## Future UAT
+
+- Same canonical task routes identically with a different presentation theme.
+- Non-owner skill call is denied/delegated even when plugin is globally installed.
+- Each profile reads/writes its own memory namespace; Core may administer under its explicit admin permissions only.
+- Telegram topics and WebApp reflect profile labels without changing routing or permission.
+- Profile setup from a template copies approved defaults only, never credentials or broad Core privileges.
+
+## Source reconciliation
+
+Current remote baseline: [theme.yaml](../../config/theme.yaml); canonical descriptions in [foundation](../foundation.md) and [Constitution](../CONSTITUTION.md). v1.2.2 target profile identifiers and MCP inventory are from user-approved prior discussions; recheck against VPS checkout before acting.
