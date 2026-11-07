@@ -54,3 +54,16 @@ Before each autonomous run finishes, answer:
 - Can I produce that work without spending unreliable model quota, touching local Windows, leaking secrets or advancing beyond Block 3?
 
 If the final answer is **yes**, choose and do that work while resources permit. If **no**, record the exact blocker and the first resumption condition; avoid fabricated progress or empty commits.
+
+## GitHub CI housekeeping: final fallback
+
+This request is lower priority than previously approved pre-Block-3 Olympus tasks and independent preparation. When other meaningful work is completed or blocked, inspect checks in the user's other GitHub repositories, especially Curatia and personal website. Apply senior developer root-cause diagnosis; distinguish historic failed runs from current failures. Do not disable checks or claim a historical red run can be turned green. A fix needs an actual reproducible defect, isolated branch/PR, tests and review.
+
+Initial read-only GitHub Actions check on 2026-11-07:
+- `Guilsc/curatia-content-engine`: latest listed `Web CI` run on 2026-11-04 **success** ([run 41771315547](https://github.com/Guilsc/curatia-content-engine/actions/runs/41771315547)); historical failures on 2026-10-28, including [run 40649992278](https://github.com/Guilsc/curatia-content-engine/actions/runs/40649992278).
+- `Guilsc/my-personal-site`: latest listed `Sync project content` run on 2026-11-06 **success** ([run 42247582332](https://github.com/Guilsc/my-personal-site/actions/runs/42247582332)); `Validate production build` on 2026-11-04 **success** ([run 41785903891](https://github.com/Guilsc/my-personal-site/actions/runs/41785903891)); historical failure on 2026-11-03 ([run 41672365485](https://github.com/Guilsc/my-personal-site/actions/runs/41672365485)).
+- These results do not verify all open PR checks, branch restrictions, Copilot jobs, external deployments or remaining GitHub runs. Do not attribute failures to Copilot without supporting job logs.
+
+## Four-hour daily handoff format
+
+For each substantive workstream, provide **Delivered**, **Blocked**, **Decision needed**, and **Remaining in approved scope**. Distinguish tool-verified results from user-reported historical context. Include commits, pull requests, acceptance gates, failed tests and next step. Identify any genuine decision that cannot be resolved by available tools, specialists, skills or plugins. When evidence is missing, do not claim completion; resume from the checkpoint next round.
