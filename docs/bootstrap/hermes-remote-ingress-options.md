@@ -75,3 +75,15 @@ acceptance: reject all unverified claims; no side effects
 **Unverified**: native VPS API authenticated ingress, an effective Telegram user-authenticated session, bot-to-bot-enabled group, active Hermes polling of GitHub queue, and ability to execute commands on VPS.
 
 **Next move**: establish the existing HTTPS gateway's authorized API/session interface; if impossible, use an already authorized user-side Work browser session. Avoid installing a new bot or altering current webhook merely to simulate the user's message.
+
+## 2026-11-07 legacy second bot recovery and actual probe
+
+Relevant conversation history identifies an earlier second Telegram bot, `@guilherme_local_codex_agent_bot`, associated with the Universal Agent Bot Hub / Codex experiment. This does **not** prove it is the *new* bot the user added to a group today. Previous host work also reportedly used Telegram MTProto authentication and separate Telegram bot services under `/opt/olympus-bots`, with in-progress thread/mention routing; confirm effective VPS state before assuming any service is active.
+
+The existing connected Hermes Bot API client attempted a **read-only** `getChat` for that bot username and a **harmless** direct `sendMessage` with no operational instruction. Both failed with Telegram `Bad Request: chat not found`. The failure does not prove the bot doesn't exist; it does prove the current connected bot cannot directly route to it by that username in this setup. Do not retry blindly, disclose BotFather tokens, or bypass Telegram's bot communication mode.
+
+Official Telegram [bot-to-bot documentation](https://core.telegram.org/api/bots/bot-to-bot) allows message exchange in group chats when one bot has the mode enabled and message contains an explicitly targeted command or reply, with additional admission conditions; private bot-to-bot requires mode enabled for both. Group identity and actual member permissions remain unverified. The self-sent Hermes notification (Telegram ID 808) is not an incoming message.
+
+**Test-only code prepared** in a separate isolated draft PR, [universal-agent-bot-hub #4](https://github.com/Guilsc/universal-agent-bot-hub/pull/4): synthetic bot-originated group message validation for both allowlists, command-target matching and topic isolation. GitHub Actions runs are evidence of *offline unit tests only*, not Telegram delivery, Hermes integration, model access or VPS execution. The existing hub uses a Codex worker, not a Hermes runtime. Never deploy it as an implicit replacement for Hermes Core.
+
+Next real integration requires either the group chat ID and BotFather mode/permissions verified from a trusted session, or authenticated HTTP/WS admission into the existing Hermes VPS gateway. The latter remains architecturally preferred and avoids setting up a duplicate Telegram poller.
