@@ -64,3 +64,15 @@ If unable to verify, explicitly reply UNVERIFIED.
 ```
 
 This text is not a proof of the claimed identity by itself; corroborate with real VPS-side session ID and host evidence.
+
+## Follow-up: verified Composio outbound transport (2026-11-07)
+
+**New evidence:** using the connected Telegram Bot API, `getChat` succeeded for the user's previously authorized **private chat**, and `sendMessage` succeeded from `@guilherme_hermes_agent_bot` (Telegram message ID **808**). The diagnostic contained no executable instruction and changed no VPS service.
+
+**Important limit:** a message **sent by the bot itself** is an outbound notification, not an inbound user message to its own Telegram webhook. Thus this does **not** establish ChatGPT → Hermes Core command execution, a working VPS gateway, or permission to create/modify a group. The Bot API connection is bot-identity-only; do not assume it can impersonate the human account or send a Telegram user message into its own bot.
+
+Read-only Telegram `getMe` and `getChat` succeeded without modifying the webhook or active session. No webhook-info tool was discoverable through the connected Telegram toolkit; avoid calling `getUpdates` as an unreviewed substitute. Determine the actual webhook/polling consumer later from the authenticated VPS Core runtime.
+
+**Security:** a BotFather credential was shared in conversation. Do **not** embed its value or the user's private chat ID in a public repository, issue, log or prompt. Treat this credential as exposed; plan a controlled rotation with verified current token destination, secure secret store and rollback after the VPS gateway is accessible. Never rotate blindly or break the working bot.
+
+**Recommended next safe test:** user-originated innocuous `/status` or equivalent known supported command from the verified chat, then correlate its reply and session ID with actual Hermes Core VPS logs if available. Do not invent command names or infer profile identity from a Telegram reply alone. User should not need to repeat identities already established by the connected Bot API.
