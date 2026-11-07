@@ -60,3 +60,7 @@ Review the [requirements checklist](requirements-traceability-audit.md) and [ope
 | [Vertical Kanban picklist](vertical-kanban-picklist-ux.md) | Galaxy/initiative tree, board state mapping, permissions, evidence panel, accessibility and synthetic mock data | UI specification only; no new Kanban plugin or app |
 
 Never claim the prompt playbook ran remotely or the UI specification was installed. Read these before asking the user to provide an already documented topic or proposing new project services.
+
+## Static visual prototype
+
+[Mission Control — three selectable layout concepts](mission-control-three-concepts.html) is a **standalone HTML/CSS prototype** with concept tabs (A Command Bridge, B Galaxy Atlas, C Mission Studio), synthetic status data and a vertical initiative picker. It is not connected to the VPS and has no operational backend, model calls, auth or real approvals. The file can be inspected as source on GitHub or rendered safely as a local static HTML artifact; no ChatGPT Project has been created.
