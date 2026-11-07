@@ -60,3 +60,19 @@ UI drag/drop is never permission for privileged execution or acceptance. Parent 
 ## Current evidence
 
 GitHub-only draft workpack: prepared. Actual VPS session: not established. Real native Kanban task IDs: unknown. Specialist workers: unverified. Live VPS backup: unverified. No tasks delegated or executed remotely by this document.
+
+## Ownership transition once Olympus bots are operational (explicit user decision)
+
+**Hermes Core `default` is an infrastructure/bootstrap operator, not the standing orchestrator or owner of Olympus initiatives.** Its interim coordination of BOOT tasks exists solely because the actual Olympus bots and their native capability grants have not been verified ready.
+
+When Zeus, Olympus Hermes and the six Domain Owner bots/profiles are actually configured, authenticated, tested and approved:
+
+1. **Zeus / governor** evaluates and authorizes the initiative or change request. Bootstrap infrastructure maintenance remains a distinct operational responsibility.
+2. **Olympus Hermes / orchestrator** becomes responsible for goal breakdown, canonical ownership, task dependency sequencing, specialist delegation, review routing and state coordination. Use the approved native Kanban and agent delegation mechanism; do not create a parallel side-effect authority.
+3. **Correct Domain Owner** owns execution within the exclusive realm capabilities. For multi-realm objectives, Hermes delegates each bounded contribution to its owner, even if small. The supporting agent does not take over the lead owner's entire outcome.
+4. **Temporary workers and independent reviewers** receive scoped, time-bounded tasks. They cannot acquire permanent capabilities, approve their own privileged changes or bypass Zeus.
+5. **Hermes Core `default`** supplies platform/VPS diagnostics, backup, gateway administration and engineering support *when explicitly delegated* or when acting within its separately authorized platform-operator mandate. It must not remain an Olympus mission coordinator, dispatch other gods on its own initiative, or inherit the project mission backlog by default.
+6. **Handoff criteria:** prove target bot identities and role contracts, authenticated ingress, effective grants and memory isolation, native Kanban/dispatcher availability, audit/rollback, and end-to-end UAT. Link all BOOT card IDs and historical evidence before transferring or reassigning work; never silently steal existing active attempts.
+7. **If bots unavailable or readiness fails:** leave Olympus-owned work BLOCKED/QUEUED pending proper orchestration. Hermes Core may continue separate platform recovery, but must **not impersonate Olympus Hermes or execute domain work as a workaround**.
+
+The 14 proposed Core-owned bootstrap subcards are **temporary administrative recovery cards**, not a reusable policy assigning all future Olympus work to Core. Once bots are ready, the original mission activities must be routed through Zeus → Olympus Hermes → owning Domain Owner and the established delegate/review process. No current live bot activation or work reassignment is claimed.
