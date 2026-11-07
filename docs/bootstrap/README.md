@@ -50,3 +50,13 @@
 ## Last action before stopping a run
 
 Review the [requirements checklist](requirements-traceability-audit.md) and [open-loop register](open-loop-register.md) against the newest user instructions and actual GitHub state. Pick an independent, bounded, authorized next action if possible; otherwise record the precise blocker and resume condition. Never invent success or perform a riskier activity just to keep moving.
+
+## Newly prepared reusable drafts (2026-11-07)
+
+| Document | Purpose | Runtime state |
+| --- | --- | --- |
+| [Future block-by-block implementation drafts](future-blocks-implementation-drafts.md) | FUTURE-B03..B12 for Olympus and future MC01..04/CR01..04 with prerequisites, negative tests, review and stop gates | Future only; no Block 3 authorization |
+| [Telegram/Hermes prompt playbook](telegram-hermes-prompt-playbook.md) | Operator provenance, BOOT task prompts, transport/debug/reviewer/daily scripts and topic guidance | Prepared instructions only; inbound Hermes gateway unverified |
+| [Vertical Kanban picklist](vertical-kanban-picklist-ux.md) | Galaxy/initiative tree, board state mapping, permissions, evidence panel, accessibility and synthetic mock data | UI specification only; no new Kanban plugin or app |
+
+Never claim the prompt playbook ran remotely or the UI specification was installed. Read these before asking the user to provide an already documented topic or proposing new project services.
