@@ -5,7 +5,7 @@ STATUS: DRAFT ONLY. The user supplied the existing board at https://hermes-gatew
 ## Rules and responsibilities
 
 - Hermes Core profile default coordinates this administrative VPS bootstrap. The canonical Olympus Hermes orchestrator remains distinct and must not be instantiated or given Core privileges.
-- Specialist lanes below are expertise assignments, not persistent Olympus roles, active workers, or new grants. Delegate only to available, authenticated, least-privilege workers on the actual VPS. If unavailable, Core retains the task and records the specialist lens.
+- Specialist lanes below are expertise assignments, not persistent Olympus roles, active workers, or new grants. Delegate only to available, authenticated, least-privilege workers on the actual VPS. If unavailable, Core retains only the authorized infrastructure/bootstrap task and records the specialist lens; Olympus domain tasks remain queued for Olympus Hermes and their Domain Owners.
 - STOP before Block 3. No architecture, provider, bot, webhook, DNS, proxy, or plugin mutation merely for task setup.
 - The authoritative BOOT-00 / BOOT-U0 mapping conflicts across historical sources. Inspect live cards and checkpoint before creating, renaming, or moving any card. Match existing tasks by goal, current ID and scope, not title alone.
 - Every card needs immutable goal, explicit dependency, one side-effect owner, read-only vs mutating classification, bounded attempt, true execution evidence, deterministic tests, separate reviewer, PASS / REWORK / BLOCKED, and cancellation/rollback.
@@ -56,6 +56,25 @@ UI drag/drop is never permission for privileged execution or acceptance. Parent 
 > Execute approved read-only and backup tasks only through applicable gates, with per-attempt evidence and independent review. Never treat messages sent by the Telegram bot as its own inbound instructions. Never alter bot tokens, webhook, providers, DNS/proxy, memory, roles or native plugins without approval. Stop before Block 3.
 >
 > When a card blocks, record the real error, attempted safe alternatives and next prerequisite; proceed with an independent authorized card. Before reporting idle, reread requirements-traceability-audit.md and open-loop-register.md. Return actual card IDs, terminal statuses, host/provider receipts, tests and remaining scope. Do not invent successful runs.
+
+## Bot-readiness and delegation handoff UAT (not executed)
+
+These checks are required before moving Olympus mission ownership away from interim Core administration. Test with a harmless synthetic initiative and disposable evidence only, using the actual runtime grants and identities:
+
+| Test | Positive acceptance | Mandatory negative assertion |
+| --- | --- | --- |
+| Identity | Zeus, Olympus Hermes and six owners resolve to separate effective profiles | Core `default` is not aliased to Olympus Hermes |
+| Governor | Zeus authorizes the synthetic initiative with traceable decision ID | A denied initiative cannot be dispatched |
+| Planning | Olympus Hermes decomposes approved work into bounded tasks and links dependencies | Core does not create or own new Olympus domain cards |
+| Exclusive owner | Correct Domain Owner executes only its allowed side effect | Another owner and Core are denied direct use of that capability |
+| Cross-realm | Olympus Hermes routes a minor contribution to the owning realm and receives a bounded result | Lead owner cannot borrow the other realm's tool even for a small task |
+| Reviewer | Independent reviewer validates test evidence and marks PASS/REWORK/BLOCKED | Worker cannot self-approve or grant privileges |
+| Memory | Each profile writes only its own permitted state; audit shows provenance | No alias or shared writable SOUL/USER/MEMORY to Core or another god |
+| Kanban handoff | Existing native card IDs, history, attempts and dependencies are preserved and linked to new ownership | Active attempts are not reassigned, duplicated or silently marked Done |
+| Cancellation | Bounded delegated task can be cancelled and produces final audit receipt | No orphaned retry or invisible background loop |
+| Recovery | A failed readiness test leaves mission work queued and Core's platform service unaffected | No fallback impersonation, broad Core token reuse or forced profile creation |
+
+**Gate:** All tests must have actual native card/session IDs, observed effective grants, redacted runtime evidence, and independent review. If any fail, record `BLOCKED` and keep existing ownership unchanged. A documentation check or GitHub CI PASS does not satisfy runtime UAT.
 
 ## Current evidence
 
